@@ -1,0 +1,82 @@
+/* --s: scale for the stamp artwork. It follows the width scale (--u), but shrinks
+   when the space under the navbar is too short, so the outline always fits with
+   equal margins above and below. */
+.section-stamp {
+    --s: min(var(--u), calc((100vh - 171.4 * var(--u)) / 628));
+    height: calc(100vh - 131.4 * var(--u));
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-image: url(../resources/stamp_landing/background_img.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.stamp-border-div {
+    flex: 1;
+    min-height: 0;
+    background-image: url(../resources/stamp_landing/try_hard.png);
+    background-size: calc(1010 * var(--s)) calc(628 * var(--s));
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.letter-container {
+    position: relative;
+    width: calc(883 * var(--s));
+    height: calc(400 * var(--s));
+    display: flex;
+    flex-direction: row;
+}
+
+.letter {
+    position: absolute;
+    transition: rotate 0.1s linear;
+}
+
+.letter-three:hover {
+    rotate: calc(-12deg);
+}
+
+.letter-two:hover {
+    rotate: calc(-8deg);
+}
+
+.letter-one:hover {
+    rotate: calc(8deg);
+}
+
+.letter-three {
+    top: calc(60 * var(--s));
+    left: calc(60 * var(--s));
+    width: 32%;
+    rotate: calc(-8deg);
+    z-index: 2;
+}
+
+
+.letter-two {
+    top: calc(170 * var(--s));
+    left: calc(320 * var(--s));
+    width: 25%;
+    rotate: calc(-5deg);
+    z-index: 3;
+}
+
+.letter-one {
+    top: calc(70 * var(--s));
+    right: calc(50 * var(--s));
+    width: 40%;
+    rotate: calc(5deg);
+    z-index: 1;
+}
+
+.stamp-top {
+    display: block;
+    flex-shrink: 0;
+    height: calc(20 * var(--u));
+    width: 100%;
+}

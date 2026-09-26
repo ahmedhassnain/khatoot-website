@@ -1,0 +1,92 @@
+.entire-about-section {
+    font-size: calc(16 * var(--u));
+    background-image: url(../resources/item_highlight/background_letter.png);
+    background-size: 100% 100%;
+    height: calc(1825 * var(--u));
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: calc(100 * var(--u)) calc(70 * var(--u)) 0 calc(100 * var(--u));
+    gap: calc(50 * var(--u));
+}
+
+.header-about {
+    width: 100%;
+    color: #5B0000;
+}
+
+.header-about > h1 {
+    font-family: 'Malevice-Ink';
+    font-size: calc(48 * var(--u));
+}
+
+.header-about > p {
+    width: 50%;
+    font-family: 'Segoe Script';
+    font-size: calc(20 * var(--u));
+}
+
+.about-layout-panel {
+    display: flex;
+    flex-direction: column;
+    gap: calc(10 * var(--u));
+}
+
+.panel {
+    display: flex;
+    align-items: center;
+    color: #5B0000;
+    justify-content: center;
+}
+
+.panel-left {
+    width: 30%;
+}
+
+.panel-left > img {
+    width: 95%;
+}
+
+.panel-right {
+    width: 50%;
+}
+
+.panel-right > h1 {
+    font-size: calc(50 * var(--u));
+    font-family: 'Malevice-Ink';
+}
+
+.panel-right > p {
+    width: 95%;
+    font-size: calc(20 * var(--u));
+    font-family: 'Segoe Script';
+}
+
+.panel-four {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #5B0000;
+    margin-top: calc(50 * var(--u));
+}
+
+.panel-left-four {
+    width: 60%;
+}
+
+.panel-left-four > p {
+    font-family: 'Segoe Script';
+    font-size: calc(24 * var(--u));
+}
+
+.panel-right-four > button {
+    border-radius: calc(20 * var(--u));
+    border: calc(5 * var(--u)) solid #5B0000;
+    background: none;
+    font-family: 'Malevice-Ink';
+    font-size: calc(28 * var(--u));
+    color: #5B0000;
+    width: calc(200 * var(--u));
+    height: calc(60 * var(--u));
+}

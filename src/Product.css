@@ -1,0 +1,266 @@
+.product-container {
+    font-size: calc(16 * var(--u));
+    background-image: url(../resources/item_highlight/background_letter.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    gap: calc(70 * var(--u));
+    padding: calc(100 * var(--u)) calc(50 * var(--u)) 0 calc(50 * var(--u));
+}
+
+.left-right-holder {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: calc(20 * var(--u));
+    justify-content: center;
+}
+
+.left-slideshow {
+    width: 40%;
+    aspect-ratio: 455 / 572;
+    background-image: url(../resources/item_highlight/background_image_display.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-left-ss > button, .button-right-ss > button{
+    width: calc(30 * var(--u));
+    height: calc(30 * var(--u));
+    border-radius: calc(22 * var(--u));
+    font-weight: 900;
+    font-size: calc(16 * var(--u));
+    color: maroon;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}   
+
+.left-slideshow-img {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 88%;
+    width: 74%;
+}
+
+.button-left-ss {
+    margin: calc(40 * var(--u));
+}
+
+.button-right-ss {
+    margin: calc(40 * var(--u));
+}
+
+.right-desc-suit {
+    width: 35%;
+    height: 65%;
+    color: #5B0000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: calc(20 * var(--u));
+}
+
+.title-desc-suit {
+    width: 95%;
+    padding-left: calc(10 * var(--u));
+}
+
+.title-desc-suit > h1 {
+    font-family: 'Malevice-Ink';
+    font-size: calc(45 * var(--u));
+
+}
+
+.title-desc-suit > p {
+    font-family: 'Segoe Script';
+    font-weight: bold;
+    font-size: calc(20 * var(--u));
+}
+
+.price-and-buttons {
+    font-family: 'Malevice-Ink';
+    font-size: calc(20 * var(--u));
+    display: flex;
+    flex-direction: column;
+    gap: calc(30 * var(--u));
+    
+}
+
+.price-and-buttons > h3 {
+    padding-left: calc(10 * var(--u));
+}
+
+.buttons-div-top {
+    display: flex;
+    align-items: space-around;
+    width: 100%;
+    gap: calc(10 * var(--u));
+}
+
+.quantity-button, .dropdown-select-button {
+    height: calc(20 * var(--u));
+    display: flex;
+    justify-content: space-between;
+    border: calc(5 * var(--u)) solid #5B0000;
+    padding: calc(8 * var(--u)) calc(20 * var(--u)) calc(4 * var(--u)) calc(20 * var(--u));
+    border-radius: calc(40 * var(--u));
+}
+
+.quantity-button {
+    width: 25%;
+}
+
+.sizing-button {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: calc(20 * var(--u));
+    position: relative;
+}
+
+.buttons-div-bottom {
+    width: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(20 * var(--u));
+    margin-top: calc(10 * var(--u));
+}
+
+.buttons-div-bottom > button {
+    font-family: 'Malevice-Ink';
+    font-size: calc(20 * var(--u));
+    border: calc(5 * var(--u)) solid #5B0000;
+    padding: calc(10 * var(--u)) calc(40 * var(--u)) calc(10 * var(--u)) calc(40 * var(--u));
+}
+
+.buy-button {
+    background: #5B0000;
+    color: #C9A352;
+}
+
+.add-button {
+    background: none;
+    color: #5B0000;
+
+}
+
+.others-in-collection-div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: calc(50 * var(--u));
+}
+
+.section-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.others-header {
+    width: 25%;
+    opacity: 85%;
+}
+
+.ind-dress-step {
+    width: calc(250 * var(--u));
+    height: calc(250 * var(--u));
+}
+
+.others-grid-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: baseline;
+}
+
+.ind-dress-stamp {
+    background-image: url(../resources/item_highlight/stamp_border_letter.png);
+    width: calc(500 * var(--u));
+    height: calc(600 * var(--u));
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+
+}
+
+.ind-dress-envelope {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.img-one {
+    background-image: url(../resources/item_highlight/dc_coord_ioc.png);
+    width: calc(400 * var(--u));
+}
+
+.img-two {
+    background-image: url(../resources/item_highlight/irish_cotton_plazo_ioc.png);
+    width: calc(420 * var(--u));
+}
+
+.img-three {
+    background-image: url(../resources/item_highlight/dc_long_ioc.png);
+    width: calc(416 * var(--u));
+}
+
+.image-dress {
+    width: 80%;
+    rotate: calc(0deg);
+    transition: rotate 0.1s linear;
+}
+
+
+.image-dress:hover {
+    rotate: calc(2deg);
+}
+
+.dropdown-options-div {
+    position: absolute;
+    z-index: 10;
+    top: calc(50 * var(--u));
+    width: calc(200 * var(--u));
+}
+
+.dropdown-options {
+    display: flex;
+    flex-direction: column;
+    gap: calc(5 * var(--u));
+    font-size: calc(12 * var(--u));
+    padding: calc(10 * var(--u)) calc(20 * var(--u)) calc(10 * var(--u)) calc(20 * var(--u));
+    line-height: 1.2;
+    background-color: #C9A352;
+    border: calc(5 * var(--u)) solid #5B0000;
+    color: #5B0000;
+}
+
+.each-drop-option {
+    padding: calc(5 * var(--u));
+}
+
+
+
+
+
+
+
+

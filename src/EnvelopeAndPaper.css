@@ -1,0 +1,99 @@
+.sub-section-one {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.envelope-bg-div {
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 65%;
+    height: calc(600 * var(--u));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(50 * var(--u));
+    position: absolute;
+    z-index: 2;
+}
+
+
+.kamaliaEnvelope { background-size: calc(1010 * var(--u)) calc(613 * var(--u)); }
+.doriaEnvelope { background-size: calc(926 * var(--u)) calc(603 * var(--u)); }
+.irishCottonEnvelope { background-size: calc(938 * var(--u)) calc(597 * var(--u)); }
+.doriaLongEnvelope { background-size: calc(936 * var(--u)) calc(613 * var(--u)); }
+
+.kamalia-one {
+    width: 41%;
+    rotate: calc(0deg);
+    transition: rotate 0.1s ease-in-out;
+}
+
+.kamalia-one img {
+    width: 100%;
+    display: block;
+}
+
+.kamalia-one:hover {
+    rotate: calc(-2deg);
+}
+
+.kamalia-two {
+    width: 41%;
+    rotate: calc(0deg);
+    transition: rotate 0.1s ease-in-out;
+}
+
+.kamalia-two img {
+    width: 100%;
+    display: block;
+}
+
+.kamalia-two:hover {
+    rotate: calc(2deg);
+}
+
+.paper-bg-div {
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+    height: calc(350 * var(--u));
+    font-size: calc(16 * var(--u));
+    width: 50%;
+    position: absolute;
+    z-index: 1;
+    padding: 0 calc(50 * var(--u)) calc(70 * var(--u)) calc(50 * var(--u));
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+    color: #5B0000;
+    top: var(--base-top);
+    transition: top 0.2s ease-in-out;
+}
+
+.paper-bg-div:hover {
+    top: calc(var(--base-top) + calc(10 * var(--u)));
+}
+
+
+
+
+.paper-bg-left {
+    line-height: calc(20 * var(--u));
+}
+
+.paper-bg-left > h1 {
+    font-family: 'Malevice-Ink';
+    font-weight: 900;
+}
+
+.paper-bg-left > h3 {
+    font-family: 'Segoe Script';
+}
+
+.paper-bg-right > h2 {
+    font-family: 'Malevice-Ink';
+}

@@ -1,0 +1,50 @@
+header {
+    display: flex;
+    background-image: url(../resources/navbar/navbar-bg.png);
+    background-repeat: repeat-x;
+    background-size: contain;
+}
+
+nav {
+    width: 100vw;
+    height: calc(131.4 * var(--u));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-container {
+    font-size: calc(16 * var(--u));
+}
+
+.left-div, .center-div, .right-div {
+    display: flex;
+}
+
+.left-div, .right-div {
+    align-items: center;
+    width: 30%;
+    justify-content: space-evenly;
+}
+
+li {
+    list-style: none;
+    font-size: 1.5em;
+    font-weight: 600;
+
+}
+
+.khatoot-logo {
+    width: calc(150 * var(--u));
+}
+
+.nav-link {
+    font-family: 'Malevice-Ink';
+    text-decoration: none;
+    color: #5B0000;
+}

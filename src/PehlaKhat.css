@@ -1,0 +1,32 @@
+.clothes-container {
+    width: 100%;
+    height: calc(3236 * var(--u));
+    background-image: url(../resources/section-two-background.png);
+    background-size: contain;
+    background-position: center;
+    padding-top: calc(112 * var(--u));
+    padding-bottom: calc(112 * var(--u));
+}
+
+
+.header-section-clothes {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-section-khat {
+    width: 30%;
+    padding-bottom: calc(20 * var(--u));
+}
+
+.section-clothes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+
+

@@ -1,0 +1,125 @@
+.overall-cart-container {
+    font-size: calc(16 * var(--u));
+    background-image: url(../resources/item_highlight/background_letter.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    /* padding: calc(100 * var(--u)) calc(50 * var(--u)) 0 calc(50 * var(--u)); */
+}
+
+.cart-logo {
+    width: calc(200 * var(--u));
+}
+
+.header-and-elements {
+    flex-shrink: 0;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: calc(70 * var(--u));
+    padding: calc(100 * var(--u)) calc(50 * var(--u)) 0 calc(50 * var(--u));
+}
+
+.header-cart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #5B0000;
+}
+
+.header-cart-left > h1 {
+    font-family: 'Malevice-Ink';
+    font-size: calc(48 * var(--u));
+}
+
+.header-cart-left > p {
+    font-family: 'Segoe Script';
+    font-size: calc(20 * var(--u));
+}
+
+.cart-elements {
+    display: flex;
+    flex-direction: column;
+    gap: calc(70 * var(--u));
+}
+
+.empty-cart-div {
+    border-radius: calc(20 * var(--u));
+    font-family: 'Malevice-Ink';
+    padding: calc(50 * var(--u));
+    color: #5B0000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: calc(4 * var(--u)) solid #5B0000;
+}
+
+.cart-total-footer {
+    flex-shrink: 0;
+    background-image: url(../resources/cart_elements/fixed_cart_total.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 88vw;
+    height: calc(284 * var(--u));
+    padding: calc(29 * var(--u)) calc(50 * var(--u));
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.cart-total-left {
+    background-image: url(../resources/cart_elements/cart_stamp_outline.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 100%;
+    aspect-ratio: 1011 / 406;
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    gap: calc(50 * var(--u));
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-total-right {
+    width: 43.5%;
+    flex: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.total-quantity, .total-amount {
+    display: flex;
+    justify-content: space-between;
+    font-size: calc(24 * var(--u));
+    font-family: 'Malevice-Ink';
+    
+}
+
+.total-quantity {
+    width: 70%;
+}
+
+.total-amount {
+    width: 70%;
+}
+
+.cart-items, .price-items {
+    color: #5B0000;
+}
+
+.cart-items-num, .price-items-num {
+    color: #4E321C;
+}
+
+.checkout-tag {
+    width:  50%;
+}
+

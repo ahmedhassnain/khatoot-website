@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'Malevice-Ink';
+  src: url('../resources/MaleviceInkbleed-ExtraBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Layout was designed at a 1536px-wide viewport.
+   --u equals 1px at that width and scales proportionally on every other screen. */
+:root {
+    --u: calc(100vw / 1536);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #D7AF82;
+}
+
