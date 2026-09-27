@@ -5,10 +5,10 @@ import CartElement from './CartElement.jsx';
 import { useCart } from './CartContext';
 
 export default function Cart() {
-    const { cartItems } = useCart();
-    console.log(cartItems)
+    const { cartItems, checkoutUrl, getPrice } = useCart();
+    const totalPrice = cartItems.reduce((sum, item) => sum + getPrice(item.id) * item.quantity, 0);
     return (
-        <section className = "overall-cart-container" style = {{ minHeight: `calc(${cartItems.length === 0 ? 1050 : (cartItems.length * 544.5) + 807.5} * var(--u))`}}>
+        <section className = "overall-cart-container" style = {{ minHeight: `calc(${cartItems.length === 0 ? 1050 : (cartItems.length * 544.5) + 737.5} * var(--u))`}}>
             <div className = "header-and-elements">
                 <div className = "header-cart">
                     <div className = "header-cart-left">
@@ -34,6 +34,7 @@ export default function Cart() {
                                     id = {eachItem.id}
                                     quantity = {eachItem.quantity}
                                     size = {eachItem.size}
+                                    price = {getPrice(eachItem.id)}
                                 />
                             )
                         })
@@ -48,11 +49,17 @@ export default function Cart() {
                         </div>
                         <div className = "total-amount">
                             <h1 className = "price-items">Total Price:</h1>
-                            <h1 className = "price-items-num">{cartItems.length * 4500} PKR</h1>
+                            <h1 className = "price-items-num">{totalPrice} PKR</h1>
                         </div>
                     </div>
                     <div className = "cart-total-right">
-                        <img className = "checkout-tag" src = {checkoutTag} />
+                        <a
+                            href = {checkoutUrl || undefined}
+                            className = {`checkout-link${cartItems.length === 0 || !checkoutUrl ? ' checkout-disabled' : ''}`}
+                            onClick = {(e) => { if (cartItems.length === 0 || !checkoutUrl) e.preventDefault(); }}
+                        >
+                            <img className = "checkout-tag" src = {checkoutTag} />
+                        </a>
                     </div>
                 </div>
         </section>

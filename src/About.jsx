@@ -1,4 +1,5 @@
 import './About.css'
+import { Link } from 'react-router-dom';
 import imageOne from '../resources/about_elements/image_one.png';
 import imageTwo from '../resources/about_elements/image_two.png';
 import imageThree from '../resources/about_elements/image_three.png';
@@ -52,7 +53,7 @@ export default function About() {
                     </div>
 
                     <div className = "panel-right-four">
-                        <button className = "contact-button">Contact</button>                     
+                        <button className = "contact-button"><Link className = "contact-button-link" to = "/missing">Contact</Link></button>                     
                     </div>
                 </div>              
             </div>

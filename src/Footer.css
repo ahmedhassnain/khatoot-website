@@ -51,6 +51,12 @@
                0 0 calc(4 * var(--u)) rgba(139, 19, 19, 0.2);
 }
 
+.footer-link {
+    font-family: 'Malevice-Ink';
+    text-decoration: none;
+    color: #5B0000;
+}
+
 .khaarji-links {
     width: 100%;
     text-align: left;
@@ -60,9 +66,10 @@
     padding-top: calc(25 * var(--u));
     width: 100%;
     text-align: center;
-    font-family: 'Bodoni-Moda';
+    font-family: 'Malevice-Ink';
     color: #5B0000;
     font-weight: 600;
     font-size: calc(20 * var(--u));
     padding-bottom: calc(25 * var(--u));
 }
+

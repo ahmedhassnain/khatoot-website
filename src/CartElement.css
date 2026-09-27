@@ -81,11 +81,15 @@
     background: #fbf3e4;
     border: calc(1 * var(--u)) solid #4E321C;
     z-index: 10;
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
 }
 
 .each-color-option {
-    padding: calc(6 * var(--u)) calc(10 * var(--u));
+    padding: calc(10 * var(--u)) calc(20 * var(--u));
     cursor: pointer;
+    font-family: 'Malevice-Ink';
 }
 
 .each-color-option:hover {
@@ -120,6 +124,11 @@
     gap: calc(15 * var(--u));
     align-items: baseline;
     bottom: calc(var(--line-one) + var(--above-line));
+}
+
+.quantity-postcard > button {
+    color: #4E321C;
+    cursor: pointer;
 }
 
 .price-postcard {

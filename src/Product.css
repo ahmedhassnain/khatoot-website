@@ -116,6 +116,13 @@
     border-radius: calc(40 * var(--u));
 }
 
+.quantity-button > h4:first-child,
+.quantity-button > h4:last-child,
+.dropdown-select-button,
+.each-drop-option {
+    cursor: pointer;
+}
+
 .quantity-button {
     width: 25%;
 }
@@ -142,6 +149,7 @@
     font-size: calc(20 * var(--u));
     border: calc(5 * var(--u)) solid #5B0000;
     padding: calc(10 * var(--u)) calc(40 * var(--u)) calc(10 * var(--u)) calc(40 * var(--u));
+    cursor: pointer;
 }
 
 .buy-button {
@@ -199,6 +207,7 @@
 
 .ind-dress-envelope {
     height: 100%;
+    overflow: hidden;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -208,25 +217,13 @@
     justify-content: flex-end;
 }
 
-.img-one {
-    background-image: url(../resources/item_highlight/dc_coord_ioc.png);
-    width: calc(400 * var(--u));
-}
-
-.img-two {
-    background-image: url(../resources/item_highlight/irish_cotton_plazo_ioc.png);
-    width: calc(420 * var(--u));
-}
-
-.img-three {
-    background-image: url(../resources/item_highlight/dc_long_ioc.png);
-    width: calc(416 * var(--u));
-}
-
 .image-dress {
-    width: 80%;
+    width: calc(320 * var(--u));
+    height: calc(420 * var(--u));
+    object-fit: cover;
     rotate: calc(0deg);
     transition: rotate 0.1s linear;
+    padding-bottom: 5px;
 }
 
 

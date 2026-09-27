@@ -1,33 +1,62 @@
 import './Product.css'
 import sameColHeader from '../resources/item_highlight/same_col_header.png';
-import stampBorder from '../resources/item_highlight/stamp_border_letter.png';
-import envOne from '../resources/item_highlight/dc_coord_ioc.png';
-import envTwo from '../resources/item_highlight/irish_cotton_plazo_ioc.png';
-import envThree from '../resources/item_highlight/dc_long_ioc.png';
-import imgOne from '../resources/item_highlight/doria_cotton_picture.png';
-import imgTwo from '../resources/item_highlight/irish_cotton_palazzo_picture.png';
-import imgThree from '../resources/item_highlight/doria_cotton_long_shirt_picture.png';
+import kamaliaEnvelope from '../resources/item_highlight/kamalia_khaddar_ioc.png';
+import kamaliaPicture from '../resources/item_highlight/kamalia_image_one_letter.png';
+import doriaCoordEnvelope from '../resources/item_highlight/dc_coord_ioc.png';
+import doriaCoordPicture from '../resources/item_highlight/doria_cotton_picture.png';
+import irishCottonEnvelope from '../resources/item_highlight/irish_cotton_plazo_ioc.png';
+import irishCottonPicture from '../resources/item_highlight/irish_cotton_palazzo_picture.png';
+import doriaLongEnvelope from '../resources/item_highlight/dc_long_ioc.png';
+import doriaLongPicture from '../resources/item_highlight/doria_cotton_long_shirt_picture.png';
 import pehlaKhatDetails from './PehlaKhatDetails.js';
-import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState, useRef, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import { useCart } from './CartContext';
+import { createCartWithLine } from './shopify';
+
+// Envelope + picture pair shown per design in the "same collection" section below.
+const collectionAssets = {
+    "Kamalia Khaddar Piece": { envelope: kamaliaEnvelope, picture: kamaliaPicture, width: 390, offsetY: 15 },
+    "Doria Cotton Co-Ord Piece": { envelope: doriaCoordEnvelope, picture: doriaCoordPicture, width: 400, offsetY: 0 },
+    "Irish Cotton Piece": { envelope: irishCottonEnvelope, picture: irishCottonPicture, width: 420, offsetY: 0 },
+    "Doria Cotton Long Piece": { envelope: doriaLongEnvelope, picture: doriaLongPicture, width: 416, offsetY: 0 },
+};
 
 
 export default function Product() {
 
-    const { addToCart } = useCart();
+    const { addToCart, getPrice } = useCart();
 
     const [activeImage, setActiveImage] = useState(0);
     const [currentQuantity, setCurrentQuantity] = useState(1);
     const [dropdownVisibility, setDropdownVisibility] = useState(false);
     const [sizeSelected, setSizeSelected] = useState("Medium");
+    const sizingButtonRef = useRef(null);
+
+    useEffect(() => {
+        if (!dropdownVisibility) return;
+        function handleClickOutside(e) {
+            if (sizingButtonRef.current && !sizingButtonRef.current.contains(e.target)) {
+                setDropdownVisibility(false);
+            }
+        }
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, [dropdownVisibility]);
 
     const [currentCart, setCurrentCart] = useState(
         [
 
         ]
     );
-    const { id } = useParams(); 
+    const { id } = useParams();
+
+    // Every other design (not this one), earliest-added first, capped at 3.
+    const currentTitle = pehlaKhatDetails[id]?.title;
+    const otherDesigns = [...new Set(pehlaKhatDetails.map((product) => product.title))]
+        .filter((title) => title !== currentTitle)
+        .slice(0, 3)
+        .map((title) => pehlaKhatDetails.find((product) => product.title === title));
 
    function goToPrev() {
         setActiveImage(activeImage === 0 ? pehlaKhatDetails[id].image_list.length - 1 : activeImage - 1);
@@ -62,31 +91,47 @@ export default function Product() {
                                     <p>{eachLetter.description}</p>
                                 </div>
                             <div className = "price-and-buttons">
-                                <h3>PKR 4500</h3>
+                                <h3>PKR {getPrice(Number(id))}</h3>
                                 <div className = "buttons-div-top">
                                     <div className = "quantity-button">
                                         <h4 onClick = {() => setCurrentQuantity((currentQuantity) => currentQuantity > 1 ? currentQuantity - 1 : 1)}>-</h4>
                                         <h4>{currentQuantity}</h4>
                                         <h4 onClick = {() => setCurrentQuantity((currentQuantity) => currentQuantity < 4 ? currentQuantity + 1 : 4)}>+</h4>
                                     </div>
-                                    <div className = "sizing-button">
-                                        <div className = "dropdown-select-button">
+                                    <div className = "sizing-button" ref = {sizingButtonRef}>
+                                        <div className = "dropdown-select-button" onClick = {() => setDropdownVisibility(currentVisibility => !currentVisibility)}>
                                             <h4>Size:</h4>
                                             <h4>{sizeSelected}</h4>
-                                            <h4 onClick = {() => setDropdownVisibility(currentVisibility => !currentVisibility)}>{dropdownVisibility ? "▲" : "▼"}</h4>
+                                            <h4>{dropdownVisibility ? "▲" : "▼"}</h4>
                                         </div>
                                         <div className = "dropdown-options-div" style={{ display: dropdownVisibility === false ? 'none' : 'block' }}>
                                             <ul className = "dropdown-options">
-                                                <li className = "each-drop-option" onClick = {() => setSizeSelected("Small")}>Small</li>
-                                                <li className = "each-drop-option" onClick = {() => setSizeSelected("Medium")}>Medium</li>
-                                                <li className = "each-drop-option" onClick = {() => setSizeSelected("Large")}>Large</li>
-                                                <li className = "each-drop-option" onClick = {() => setSizeSelected("X-Large")}>X-Large</li>
+                                                <li className = "each-drop-option" onClick = {() => { setSizeSelected("Small"); setDropdownVisibility(false); }}>Small</li>
+                                                <li className = "each-drop-option" onClick = {() => { setSizeSelected("Medium"); setDropdownVisibility(false); }}>Medium</li>
+                                                <li className = "each-drop-option" onClick = {() => { setSizeSelected("Large"); setDropdownVisibility(false); }}>Large</li>
+                                                <li className = "each-drop-option" onClick = {() => { setSizeSelected("X-Large"); setDropdownVisibility(false); }}>X-Large</li>
                                             </ul>
                                         </div>
                                         </div>
                                 </div>
                                 <div className = "buttons-div-bottom">
-                                    <button className = "buy-button">Buy Now</button>
+                                    <button
+                                        className = "buy-button"
+                                        onClick = {async () => {
+                                            if (!eachLetter.variantId) {
+                                                console.error(`No Shopify variantId set for "${eachLetter.title}" (${eachLetter.color}) in PehlaKhatDetails.js`);
+                                                return;
+                                            }
+                                            try {
+                                                const cart = await createCartWithLine(eachLetter.variantId, currentQuantity, [{ key: 'Size', value: sizeSelected }]);
+                                                if (cart.checkoutUrl) window.location.href = cart.checkoutUrl;
+                                            } catch (err) {
+                                                console.error('Failed to start checkout', err);
+                                            }
+                                        }}
+                                    >
+                                        Buy Now
+                                    </button>
                                     <button className = "add-button" onClick = {() => addToCart({...eachLetter, quantity: currentQuantity, size: sizeSelected})}>Add To Cart</button>
                                 </div>
                             </div>
@@ -98,21 +143,27 @@ export default function Product() {
                                 <img className = "others-header" src = {sameColHeader} />
                             </div>
                             <div className = "others-grid-container">
-                                <div className = "ind-dress-stamp">
-                                    <div className = "ind-dress-envelope img-one">
-                                        <img className = "image-dress" src = {imgOne} />
-                                    </div>
-                                </div>
-                                <div className = "ind-dress-stamp">
-                                    <div className = "ind-dress-envelope img-two">
-                                        <img className = "image-dress" src = {imgTwo}/>
-                                    </div>
-                                </div>
-                                <div className = "ind-dress-stamp">
-                                    <div className = "ind-dress-envelope img-three">
-                                        <img className = "image-dress dress-three" src = {imgThree}/>
-                                    </div>
-                                </div>
+                                {otherDesigns.map((design) => {
+                                    const assets = collectionAssets[design.title];
+                                    return (
+                                        <Link
+                                            to = {`/product/pehla-khat/${design.id}`}
+                                            className = "ind-dress-stamp"
+                                            key = {design.title}
+                                        >
+                                            <div
+                                                className = "ind-dress-envelope"
+                                                style = {{
+                                                    backgroundImage: `url(${assets.envelope})`,
+                                                    width: `calc(${assets.width} * var(--u))`,
+                                                    transform: `translateY(calc(${assets.offsetY} * var(--u)))`,
+                                                }}
+                                            >
+                                                <img className = "image-dress" src = {assets.picture} />
+                                            </div>
+                                        </Link>
+                                    );
+                                })}
                             </div>
                         </div>
                     </section>

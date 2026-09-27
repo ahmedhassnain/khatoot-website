@@ -17,15 +17,18 @@ import doriaLongTwo from '../resources/pehla_khat/doria_cotton_long_two.png';
 import { useState } from "react";
 import { Link } from 'react-router-dom';
 import paperBackground from '../resources/pehla_khat/envelope-background.png';
+import { useCart } from './CartContext';
 import './EnvelopeAndPaper.css';
 
 export default function EnvelopeAndPaper({ id }) {
 
+    const { getPrice } = useCart();
+
     const envelopeDesc = [
-        {id: 0, envClassName: "kamaliaEnvelope", paperClassName: "kamaliaPaper", envelopeImage: kamaliaEnvelope, imgOrder: [{id: 0, imgLeft: KamaliaImageOne}, {id: 1, imgRight: KamaliaImageTwo}], heading: "Kamalia Khaddar Set", subHeading: "Where tradition finds a new form", price: "PKR 4500"},
-        {id: 1, envClassName: "doriaEnvelope", paperClassName: "doriaPaper", envelopeImage: DoriaEnvelope, imgOrder: [{id: 2, imgLeft: DoriaImageOne}, {id: 3, imgRight: DoriaImageTwo}], heading: "Doria Cotton Co-Ord Set", subHeading: "A story written in comfort", price: "PKR 4500"},
-        {id: 2, envClassName: "irishCottonEnvelope", paperClassName: "irishCottonPaper", envelopeImage: irishCottonEnvelope, imgOrder: [{id: 4, imgLeft: irishCottonImageOne}, {id: 5, imgRight: irishCottonImageTwo}], heading: "Irish Cotton Set", subHeading: "Light, effortless, and made for summer.", price: "PKR 4500"},
-        {id: 3, envClassName: "doriaLongEnvelope", paperClassName: "doriaLongPaper", envelopeImage: doriaLongEnvelope, imgOrder: [{id: 6, imgLeft: doriaLongOne}, {id: 7, imgRight: doriaLongTwo}],  heading: "Doria Cotton Long Shirt Set", subHeading: "A timeless story, reimagined", price: "PKR 4500"},
+        {id: 0, envClassName: "kamaliaEnvelope", paperClassName: "kamaliaPaper", envelopeImage: kamaliaEnvelope, imgOrder: [{id: 0, imgLeft: KamaliaImageOne}, {id: 1, imgRight: KamaliaImageTwo}], heading: "Kamalia Khaddar Set", subHeading: "Where tradition finds a new form"},
+        {id: 1, envClassName: "doriaEnvelope", paperClassName: "doriaPaper", envelopeImage: DoriaEnvelope, imgOrder: [{id: 2, imgLeft: DoriaImageOne}, {id: 3, imgRight: DoriaImageTwo}], heading: "Doria Cotton Co-Ord Set", subHeading: "A story written in comfort"},
+        {id: 2, envClassName: "irishCottonEnvelope", paperClassName: "irishCottonPaper", envelopeImage: irishCottonEnvelope, imgOrder: [{id: 4, imgLeft: irishCottonImageOne}, {id: 5, imgRight: irishCottonImageTwo}], heading: "Irish Cotton Set", subHeading: "Light, effortless, and made for summer."},
+        {id: 3, envClassName: "doriaLongEnvelope", paperClassName: "doriaLongPaper", envelopeImage: doriaLongEnvelope, imgOrder: [{id: 6, imgLeft: doriaLongOne}, {id: 7, imgRight: doriaLongTwo}],  heading: "Doria Cotton Long Shirt Set", subHeading: "A timeless story, reimagined"},
     ];
     const [currentId, setCurrentId] = useState(0);
 
@@ -48,7 +51,7 @@ export default function EnvelopeAndPaper({ id }) {
                                 <h3>{eachLetter.subHeading}</h3>
                             </div>
                             <div className = "paper-bg-right">
-                                <h2>{eachLetter.price}</h2>
+                                <h2>PKR {getPrice(idOnLeft)}</h2>
                             </div>
                         </div>
                     </div>

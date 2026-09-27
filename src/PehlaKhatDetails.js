@@ -38,7 +38,8 @@ const pehlaKhatDetails = [
         kamaliaImageTwo,
         kamaliaImageThree
     ],
-    color: "Olive Green"
+    color: "Olive Green",
+    variantId: "gid://shopify/ProductVariant/50546226495728"
     },
     {   
     id: 1, 
@@ -49,7 +50,8 @@ const pehlaKhatDetails = [
         kamaliaImageFive,
         kamaliaImageSix
     ],
-    color: "Lilac"
+    color: "Lilac",
+    variantId: "gid://shopify/ProductVariant/50546226528496"
     },
     {   
     id: 2, 
@@ -60,7 +62,8 @@ const pehlaKhatDetails = [
         DoriaImageTwo,
         DoriaImageThree
     ],
-    color: "Brown"
+    color: "Brown",
+    variantId: "gid://shopify/ProductVariant/50305229488368"
     },
     {   
     id: 3, 
@@ -71,7 +74,8 @@ const pehlaKhatDetails = [
         DoriaImageFive,
         DoriaImageSix
     ],
-    color: "Sage Green"
+    color: "Sage Green",
+    variantId: "gid://shopify/ProductVariant/50545904910576"
     },
         {   
     id: 4, 
@@ -82,7 +86,8 @@ const pehlaKhatDetails = [
         irishCottonImageTwo,
         irishCottonImageThree
     ],
-    color: "Off-White"
+    color: "Off-White",
+    variantId: "gid://shopify/ProductVariant/50546160238832"
     },
     {   
     id: 5, 
@@ -93,7 +98,8 @@ const pehlaKhatDetails = [
         irishCottonImageFive,
         irishCottonImageSix
     ],
-    color: "Light Pink"
+    color: "Light Pink",
+    variantId: "gid://shopify/ProductVariant/50304932413680"
     },
     {   
     id: 6, 
@@ -104,7 +110,8 @@ const pehlaKhatDetails = [
         doriaLongTwo,
         doriaLongThree
     ],
-    color: "Lavender"
+    color: "Lavender",
+    variantId: "gid://shopify/ProductVariant/50546247270640"
     },
         {   
     id: 7, 
@@ -115,7 +122,8 @@ const pehlaKhatDetails = [
         doriaLongFive,
         doriaLongSix
     ],
-    color: "Orange"
+    color: "Orange",
+    variantId: "gid://shopify/ProductVariant/50546247303408"
     },
 ]
 

@@ -7,6 +7,7 @@ import Home from './Home.jsx';
 import Product from './Product.jsx';
 import Cart from './Cart.jsx';
 import About from './About.jsx';
+import Missing from './Missing.jsx';
 import './Main.css';
 
 const router = createBrowserRouter([
@@ -17,7 +18,8 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "about", element: <About /> },
       { path: "product/pehla-khat/:id", element: <Product /> },
-      { path: "cart", element: <Cart /> }
+      { path: "cart", element: <Cart /> },
+      { path: "missing", element: <Missing />}
     ]
   },
 ]);

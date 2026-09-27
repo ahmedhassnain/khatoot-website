@@ -3,7 +3,7 @@ import pehlaKhatDetails from './PehlaKhatDetails';
 import { useState } from 'react';
 import { useCart } from './CartContext';
 
-export default function CartElement({ id, size, quantity }) {
+export default function CartElement({ id, size, quantity, price }) {
 
     const { changeColor, changeSize, changeQuantity, removeFromCart } = useCart();
     const [selected, setSelected] = useState(false);
@@ -79,7 +79,7 @@ export default function CartElement({ id, size, quantity }) {
                                 <button onClick = {() => changeQuantity(item.id, 1)}>+</button>
                             </div>
                             <div className = "price-postcard">
-                                <h3>PKR {quantity * 4500}</h3>
+                                <h3>PKR {quantity * price}</h3>
                             </div>
                         </div>
                     </div>

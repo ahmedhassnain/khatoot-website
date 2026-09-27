@@ -1,0 +1,21 @@
+.overall-container {
+    font-size: calc(16 * var(--u));
+    background-image: url(../resources/item_highlight/background_letter.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    gap: calc(70 * var(--u));
+    padding: calc(100 * var(--u)) calc(50 * var(--u)) 0 calc(50 * var(--u));
+
+}
+
+.missing-header {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Malevice-Ink';
+    color: #5B0000;
+}

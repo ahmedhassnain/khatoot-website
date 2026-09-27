@@ -2,7 +2,7 @@
     font-size: calc(16 * var(--u));
     background-image: url(../resources/item_highlight/background_letter.png);
     background-size: 100% 100%;
-    height: calc(1825 * var(--u));
+    height: calc(1925 * var(--u));
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
@@ -89,4 +89,9 @@
     color: #5B0000;
     width: calc(200 * var(--u));
     height: calc(60 * var(--u));
+}
+
+.contact-button-link {
+    text-decoration: none;
+    color:#5B0000;
 }

@@ -48,3 +48,65 @@ li {
     text-decoration: none;
     color: #5B0000;
 }
+
+.search-nav-link {
+    cursor: pointer;
+}
+
+.search-item {
+    position: relative;
+}
+
+.search-panel {
+    position: absolute;
+    top: calc(40 * var(--u));
+    left: 0;
+    width: calc(280 * var(--u));
+    background-color: #c9a3527f;
+    border: calc(2.5 * var(--u)) solid #5B0000;
+    border-radius: calc(15 * var(--u));
+    padding: calc(12 * var(--u));
+    z-index: 20;
+    -webkit-backdrop-filter: blur(10px);
+     backdrop-filter: blur(10px);
+
+}
+
+.search-input {
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Malevice-Ink';
+    font-size: calc(14 * var(--u));
+    color: #5B0000;
+    background: none;
+    border: none;
+    border-bottom: calc(3 * var(--u)) solid #5B0000;
+    padding: calc(4 * var(--u)) calc(2 * var(--u));
+    outline: none;
+}
+
+.search-results {
+    list-style: none;
+    margin-top: calc(10 * var(--u));
+    display: flex;
+    flex-direction: column;
+    gap: calc(6 * var(--u));
+    max-height: calc(220 * var(--u));
+    overflow-y: auto;
+}
+
+.search-results > li {
+    font-size: calc(15 * var(--u));
+    font-weight: 400;
+    font-family: 'Malevice-Ink';
+}
+
+.search-result > a {
+    text-decoration: none;
+    color: #5B0000;
+    cursor: pointer;
+}
+
+.search-no-results {
+    color: #5B0000;
+}

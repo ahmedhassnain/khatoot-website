@@ -1,6 +1,7 @@
 import kharjiHeader from '../resources/kharji_logo.png';
 import baatniHeader from '../resources/baatni_logo.png';
 import footersTop from '../resources/footers-top.png';
+import { Link } from 'react-router-dom';
 import './Footer.css'
 
 export default function Footer() {
@@ -14,10 +15,9 @@ export default function Footer() {
                             <img className = "khaarji" src = {kharjiHeader} />
                         </div>
                         <ul className = "khaarji-links">
-                            <li>Home</li>
-                            <li>Pehla Khat</li>
-                            <li>About Us</li>
-                            <li>Contact</li>
+                            <li><Link to = "/" className = "footer-link">Pehla Khat</Link></li>
+                            <li><Link to = "about" className = "footer-link">About Us</Link></li>
+                            <li><Link to = "/missing" className = "footer-link">Contact</Link></li>
                         </ul>
                     </div>
 
@@ -26,10 +26,10 @@ export default function Footer() {
                             <img className = "baatni" src = {baatniHeader} />
                         </div>
                         <ul className = "baatni-links">
-                            <li>Returns</li>
-                            <li>Shipping</li>
-                            <li>Privacy Policy</li>
-                            <li>Terms & Conditions</li>
+                            <li><Link to = "/missing" className = "footer-link">Returns</Link></li>
+                            <li><Link to = "/missing" className = "footer-link">Shipping</Link></li>
+                            <li><Link to = "/missing" className = "footer-link">Privacy Policy</Link></li>
+                            <li><Link to = "/missing" className = "footer-link">Terms & Conditions</Link></li>
                         </ul>
                     </div>
                 </div>
