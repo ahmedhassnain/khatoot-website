@@ -148,6 +148,7 @@
     font-family: 'Malevice-Ink';
     font-size: calc(20 * var(--u));
     border: calc(5 * var(--u)) solid #5B0000;
+    border-radius: 0px;
     padding: calc(10 * var(--u)) calc(40 * var(--u)) calc(10 * var(--u)) calc(40 * var(--u));
     cursor: pointer;
 }
@@ -155,12 +156,19 @@
 .buy-button {
     background: #5B0000;
     color: #C9A352;
+    transition: background 0.1s linear;
+}
+
+.buy-button:hover, .add-button:hover {
+    background: #C9A352;
+    color: #5B0000;
+    border-radius: 25px;
 }
 
 .add-button {
     background: none;
     color: #5B0000;
-
+    transition: background 0.1s linear;
 }
 
 .others-in-collection-div {
@@ -236,6 +244,9 @@
     z-index: 10;
     top: calc(50 * var(--u));
     width: calc(200 * var(--u));
+    background: none;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
 }
 
 .dropdown-options {
@@ -245,7 +256,6 @@
     font-size: calc(12 * var(--u));
     padding: calc(10 * var(--u)) calc(20 * var(--u)) calc(10 * var(--u)) calc(20 * var(--u));
     line-height: 1.2;
-    background-color: #C9A352;
     border: calc(5 * var(--u)) solid #5B0000;
     color: #5B0000;
 }
