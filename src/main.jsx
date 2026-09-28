@@ -19,7 +19,8 @@ const router = createBrowserRouter([
       { path: "about", element: <About /> },
       { path: "product/pehla-khat/:id", element: <Product /> },
       { path: "cart", element: <Cart /> },
-      { path: "missing", element: <Missing />}
+      { path: "missing", element: <Missing />},
+      { path: "*", element: <Missing /> }
     ]
   },
 ]);
