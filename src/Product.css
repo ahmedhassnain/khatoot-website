@@ -1,6 +1,6 @@
 .product-container {
     font-size: calc(16 * var(--u));
-    background-image: url(../resources/item_highlight/background_letter.png);
+    background-image: url(../resources/item_highlight/background_letter.webp);
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
@@ -20,7 +20,7 @@
 .left-slideshow {
     width: 40%;
     aspect-ratio: 455 / 572;
-    background-image: url(../resources/item_highlight/background_image_display.png);
+    background-image: url(../resources/item_highlight/background_image_display.webp);
     background-repeat: no-repeat;
     background-size: 100% 100%;
     display: flex;
@@ -194,7 +194,7 @@
 }
 
 .ind-dress-stamp {
-    background-image: url(../resources/item_highlight/stamp_border_letter.png);
+    background-image: url(../resources/item_highlight/stamp_border_letter.webp);
     width: calc(500 * var(--u));
     height: calc(600 * var(--u));
     background-repeat: no-repeat;

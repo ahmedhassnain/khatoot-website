@@ -1,6 +1,6 @@
 .overall-container {
     font-size: calc(16 * var(--u));
-    background-image: url(../resources/item_highlight/background_letter.png);
+    background-image: url(../resources/item_highlight/background_letter.webp);
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;

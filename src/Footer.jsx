@@ -1,6 +1,6 @@
-import kharjiHeader from '../resources/kharji_logo.png';
-import baatniHeader from '../resources/baatni_logo.png';
-import footersTop from '../resources/footers-top.png';
+import kharjiHeader from '../resources/kharji_logo.webp';
+import baatniHeader from '../resources/baatni_logo.webp';
+import footersTop from '../resources/footers-top.webp';
 import { Link } from 'react-router-dom';
 import './Footer.css'
 

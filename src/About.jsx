@@ -1,9 +1,9 @@
 import './About.css'
 import { Link } from 'react-router-dom';
-import imageOne from '../resources/about_elements/image_one.png';
-import imageTwo from '../resources/about_elements/image_two.png';
-import imageThree from '../resources/about_elements/image_three.png';
-import stampTop from '../resources/footers-top.png';
+import imageOne from '../resources/about_elements/image_one.webp';
+import imageTwo from '../resources/about_elements/image_two.webp';
+import imageThree from '../resources/about_elements/image_three.webp';
+import stampTop from '../resources/footers-top.webp';
 
 export default function About() {
     return (

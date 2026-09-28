@@ -1,6 +1,6 @@
 header {
     display: flex;
-    background-image: url(../resources/navbar/navbar-bg.png);
+    background-image: url(../resources/navbar/navbar-bg.webp);
     background-repeat: repeat-x;
     background-size: contain;
 }

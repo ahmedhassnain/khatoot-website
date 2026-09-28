@@ -1,5 +1,5 @@
 import './Navbar.css';
-import khatootLogo from '../resources/khatoot-logo.png';
+import khatootLogo from '../resources/khatoot-logo.webp';
 import { Link } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
 import pehlaKhatDetails from './PehlaKhatDetails.js';

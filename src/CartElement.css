@@ -18,7 +18,7 @@
     box-sizing: border-box;
     width: calc(80% + 140 * var(--u));
     aspect-ratio: 1355 / 619;
-    background-image: url(../resources/cart_elements/post-card-bg.png);
+    background-image: url(../resources/cart_elements/post-card-bg.webp);
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }

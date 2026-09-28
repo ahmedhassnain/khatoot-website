@@ -1,4 +1,4 @@
-import sectionHeader from '../resources/pehla_khat/pehla_khat_heading.png'
+import sectionHeader from '../resources/pehla_khat/pehla_khat_heading.webp'
 import EnvelopeAndPaper from './EnvelopeAndPaper';
 
 

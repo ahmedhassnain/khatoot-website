@@ -1,6 +1,6 @@
 .overall-cart-container {
     font-size: calc(16 * var(--u));
-    background-image: url(../resources/item_highlight/background_letter.png);
+    background-image: url(../resources/item_highlight/background_letter.webp);
     background-repeat: no-repeat;
     background-size: 100% 100%;
     display: flex;
@@ -60,7 +60,7 @@
 
 .cart-total-footer {
     flex-shrink: 0;
-    background-image: url(../resources/cart_elements/fixed_cart_total.png);
+    background-image: url(../resources/cart_elements/fixed_cart_total.webp);
     background-size: cover;
     background-repeat: no-repeat;
     width: 88vw;
@@ -74,7 +74,7 @@
 
 
 .cart-total-left {
-    background-image: url(../resources/cart_elements/cart_stamp_outline.png);
+    background-image: url(../resources/cart_elements/cart_stamp_outline.webp);
     background-size: 100% 100%;
     background-repeat: no-repeat;
     height: 100%;

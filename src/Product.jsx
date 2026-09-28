@@ -1,13 +1,13 @@
 import './Product.css'
-import sameColHeader from '../resources/item_highlight/same_col_header.png';
-import kamaliaEnvelope from '../resources/item_highlight/kamalia_khaddar_ioc.png';
-import kamaliaPicture from '../resources/item_highlight/kamalia_image_one_letter.png';
-import doriaCoordEnvelope from '../resources/item_highlight/dc_coord_ioc.png';
-import doriaCoordPicture from '../resources/item_highlight/doria_cotton_picture.png';
-import irishCottonEnvelope from '../resources/item_highlight/irish_cotton_plazo_ioc.png';
-import irishCottonPicture from '../resources/item_highlight/irish_cotton_palazzo_picture.png';
-import doriaLongEnvelope from '../resources/item_highlight/dc_long_ioc.png';
-import doriaLongPicture from '../resources/item_highlight/doria_cotton_long_shirt_picture.png';
+import sameColHeader from '../resources/item_highlight/same_col_header.webp';
+import kamaliaEnvelope from '../resources/item_highlight/kamalia_khaddar_ioc.webp';
+import kamaliaPicture from '../resources/item_highlight/kamalia_image_one_letter.webp';
+import doriaCoordEnvelope from '../resources/item_highlight/dc_coord_ioc.webp';
+import doriaCoordPicture from '../resources/item_highlight/doria_cotton_picture.webp';
+import irishCottonEnvelope from '../resources/item_highlight/irish_cotton_plazo_ioc.webp';
+import irishCottonPicture from '../resources/item_highlight/irish_cotton_palazzo_picture.webp';
+import doriaLongEnvelope from '../resources/item_highlight/dc_long_ioc.webp';
+import doriaLongPicture from '../resources/item_highlight/doria_cotton_long_shirt_picture.webp';
 import pehlaKhatDetails from './PehlaKhatDetails.js';
 import { useState, useRef, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';

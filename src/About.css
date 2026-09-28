@@ -1,6 +1,6 @@
 .entire-about-section {
     font-size: calc(16 * var(--u));
-    background-image: url(../resources/item_highlight/background_letter.png);
+    background-image: url(../resources/item_highlight/background_letter.webp);
     background-size: 100% 100%;
     height: calc(1925 * var(--u));
     background-repeat: no-repeat;

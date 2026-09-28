@@ -1,6 +1,6 @@
 import './Cart.css'
-import cartLogo from '../resources/cart_elements/cart_logo.png';
-import checkoutTag from '../resources/cart_elements/checkout_tag.png';
+import cartLogo from '../resources/cart_elements/cart_logo.webp';
+import checkoutTag from '../resources/cart_elements/checkout_tag.webp';
 import CartElement from './CartElement.jsx';
 import { useCart } from './CartContext';
 

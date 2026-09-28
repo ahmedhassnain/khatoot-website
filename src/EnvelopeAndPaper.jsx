@@ -1,22 +1,22 @@
-import kamaliaEnvelope from '../resources/pehla_khat/kamalia_khaddar_envelope.png';
-import KamaliaImageOne from '../resources/pehla_khat/kamalia_image_one.png';
-import KamaliaImageTwo from '../resources/pehla_khat/kamalia_image_two.png';
+import kamaliaEnvelope from '../resources/pehla_khat/kamalia_khaddar_envelope.webp';
+import KamaliaImageOne from '../resources/pehla_khat/kamalia_image_one.webp';
+import KamaliaImageTwo from '../resources/pehla_khat/kamalia_image_two.webp';
 
-import DoriaEnvelope from '../resources/pehla_khat/doria_cotton_envelope.png';
-import DoriaImageOne from '../resources/pehla_khat/doria_coord_image_one.png';
-import DoriaImageTwo from '../resources/pehla_khat/doria_coord_image_two.png';
+import DoriaEnvelope from '../resources/pehla_khat/doria_cotton_envelope.webp';
+import DoriaImageOne from '../resources/pehla_khat/doria_coord_image_one.webp';
+import DoriaImageTwo from '../resources/pehla_khat/doria_coord_image_two.webp';
 
-import irishCottonEnvelope from '../resources/pehla_khat/irish_cotton_envelope.png';
-import irishCottonImageOne from '../resources/pehla_khat/irish_cotton_image_one.png';
-import irishCottonImageTwo from '../resources/pehla_khat/irish_cotton_image_two.png';
+import irishCottonEnvelope from '../resources/pehla_khat/irish_cotton_envelope.webp';
+import irishCottonImageOne from '../resources/pehla_khat/irish_cotton_image_one.webp';
+import irishCottonImageTwo from '../resources/pehla_khat/irish_cotton_image_two.webp';
 
-import doriaLongEnvelope from '../resources/pehla_khat/doria_cotton_long_envelope.png';
-import doriaLongOne from '../resources/pehla_khat/doria_cotton_long_one.png';
-import doriaLongTwo from '../resources/pehla_khat/doria_cotton_long_two.png';
+import doriaLongEnvelope from '../resources/pehla_khat/doria_cotton_long_envelope.webp';
+import doriaLongOne from '../resources/pehla_khat/doria_cotton_long_one.webp';
+import doriaLongTwo from '../resources/pehla_khat/doria_cotton_long_two.webp';
 
 import { useState } from "react";
 import { Link } from 'react-router-dom';
-import paperBackground from '../resources/pehla_khat/envelope-background.png';
+import paperBackground from '../resources/pehla_khat/envelope-background.webp';
 import { useCart } from './CartContext';
 import './EnvelopeAndPaper.css';
 

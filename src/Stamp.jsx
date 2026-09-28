@@ -1,7 +1,7 @@
-import letterOne from '../resources/stamp_landing/letter_one.png'
-import letterTwo from '../resources/stamp_landing/letter_two.png'
-import letterThree from '../resources/stamp_landing/letter_three.png'
-import stampTop from '../resources/footers-top.png';
+import letterOne from '../resources/stamp_landing/letter_one.webp'
+import letterTwo from '../resources/stamp_landing/letter_two.webp'
+import letterThree from '../resources/stamp_landing/letter_three.webp'
+import stampTop from '../resources/footers-top.webp';
 import './Stamp.css';
 
 export default function Stamp() {

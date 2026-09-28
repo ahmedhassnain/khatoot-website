@@ -1,7 +1,7 @@
 .clothes-container {
     width: 100%;
     height: calc(3236 * var(--u));
-    background-image: url(../resources/section-two-background.png);
+    background-image: url(../resources/section-two-background.webp);
     background-size: contain;
     background-position: center;
     padding-top: calc(112 * var(--u));

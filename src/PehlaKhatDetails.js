@@ -1,30 +1,30 @@
-import kamaliaImageOne from '../resources/item_highlight/kamalia_image_one.png';
-import kamaliaImageTwo from '../resources/item_highlight/kamalia_image_two.png';
-import kamaliaImageThree from '../resources/item_highlight/kamalia_image_three.png';
-import kamaliaImageFour from '../resources/item_highlight/kamalia_image_four.png';
-import kamaliaImageFive from '../resources/item_highlight/kamalia_image_five.png';
-import kamaliaImageSix from '../resources/item_highlight/kamalia_image_six.png';
+import kamaliaImageOne from '../resources/item_highlight/kamalia_image_one.webp';
+import kamaliaImageTwo from '../resources/item_highlight/kamalia_image_two.webp';
+import kamaliaImageThree from '../resources/item_highlight/kamalia_image_three.webp';
+import kamaliaImageFour from '../resources/item_highlight/kamalia_image_four.webp';
+import kamaliaImageFive from '../resources/item_highlight/kamalia_image_five.webp';
+import kamaliaImageSix from '../resources/item_highlight/kamalia_image_six.webp';
 
-import DoriaImageOne from '../resources/item_highlight/doria_coord_image_one.png';
-import DoriaImageTwo from '../resources/item_highlight/doria_coord_image_two.png';
-import DoriaImageThree from '../resources/item_highlight/doria_coord_image_three.png';
-import DoriaImageFour from '../resources/item_highlight/doria_coord_image_four.png';
-import DoriaImageFive from '../resources/item_highlight/doria_coord_image_five.png';
-import DoriaImageSix from '../resources/item_highlight/doria_coord_image_six.png';
+import DoriaImageOne from '../resources/item_highlight/doria_coord_image_one.webp';
+import DoriaImageTwo from '../resources/item_highlight/doria_coord_image_two.webp';
+import DoriaImageThree from '../resources/item_highlight/doria_coord_image_three.webp';
+import DoriaImageFour from '../resources/item_highlight/doria_coord_image_four.webp';
+import DoriaImageFive from '../resources/item_highlight/doria_coord_image_five.webp';
+import DoriaImageSix from '../resources/item_highlight/doria_coord_image_six.webp';
 
-import irishCottonImageOne from '../resources/item_highlight/irish_cotton_image_one.png';
-import irishCottonImageTwo from '../resources/item_highlight/irish_cotton_image_two.png';
-import irishCottonImageThree from '../resources/item_highlight/irish_cotton_image_three.png';
-import irishCottonImageFour from '../resources/item_highlight/irish_cotton_image_four.png';
-import irishCottonImageFive from '../resources/item_highlight/irish_cotton_image_five.png';
-import irishCottonImageSix from '../resources/item_highlight/irish_cotton_image_six.png';
+import irishCottonImageOne from '../resources/item_highlight/irish_cotton_image_one.webp';
+import irishCottonImageTwo from '../resources/item_highlight/irish_cotton_image_two.webp';
+import irishCottonImageThree from '../resources/item_highlight/irish_cotton_image_three.webp';
+import irishCottonImageFour from '../resources/item_highlight/irish_cotton_image_four.webp';
+import irishCottonImageFive from '../resources/item_highlight/irish_cotton_image_five.webp';
+import irishCottonImageSix from '../resources/item_highlight/irish_cotton_image_six.webp';
 
-import doriaLongOne from '../resources/item_highlight/kamalia_image_four.png';
-import doriaLongTwo from '../resources/item_highlight/kamalia_image_five.png';
-import doriaLongThree from '../resources/item_highlight/kamalia_image_six.png';
-import doriaLongFour from '../resources/item_highlight/doria_cotton_long_four.png';
-import doriaLongFive from '../resources/item_highlight/doria_cotton_long_five.png';
-import doriaLongSix from '../resources/item_highlight/doria_cotton_long_six.png';
+import doriaLongOne from '../resources/item_highlight/kamalia_image_four.webp';
+import doriaLongTwo from '../resources/item_highlight/kamalia_image_five.webp';
+import doriaLongThree from '../resources/item_highlight/kamalia_image_six.webp';
+import doriaLongFour from '../resources/item_highlight/doria_cotton_long_four.webp';
+import doriaLongFive from '../resources/item_highlight/doria_cotton_long_five.webp';
+import doriaLongSix from '../resources/item_highlight/doria_cotton_long_six.webp';
 
 
 
