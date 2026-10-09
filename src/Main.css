@@ -10,6 +10,35 @@
    --u equals 1px at that width and scales proportionally on every other screen. */
 :root {
     --u: calc(100vw / 1536);
+    --gutter: 16px;
+}
+
+/* Tablets and phones: the desktop artboard would shrink type to a few pixels, so --u is
+   re-based onto a ~560px-wide artboard (capped at 1px). Every existing calc(N * var(--u))
+   keeps its proportions; each component's own media query re-flows its layout. */
+@media (max-width: 900px) {
+    :root {
+        --u: clamp(0.7px, calc(100vw / 560), 1px);
+    }
+}
+
+html, body {
+    overflow-x: clip;
+}
+
+/* The airmail-letter paper used behind the inner pages. On narrow, tall pages the artwork
+   can't be stretched or cropped without losing its striped border, so the border is drawn
+   with border-image instead: the stripes repeat along each edge and the kraft fills the middle. */
+@media (max-width: 900px) {
+    .product-container, .overall-cart-container,
+    .entire-about-section, .overall-container {
+        background-image: none !important;
+        box-sizing: border-box;
+        border-style: solid;
+        border-color: transparent;
+        border-width: 14px 14px 0 14px;
+        border-image: url(../resources/item_highlight/background_letter.webp) 40 40 0 40 fill / 14px 14px 0 14px round;
+    }
 }
 
 * {

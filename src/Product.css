@@ -271,3 +271,144 @@
 
 
 
+
+
+/* Tablets and phones: the photo frame sits above the description, and the controls widen
+   into comfortable touch targets. */
+@media (max-width: 900px) {
+    .product-container {
+        padding: 40px var(--gutter) 0;
+        gap: 56px;
+    }
+
+    .left-right-holder {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .left-slideshow {
+        width: min(100%, 480px);
+    }
+
+    .button-left-ss, .button-right-ss {
+        margin: 8px;
+    }
+
+    .button-left-ss > button, .button-right-ss > button {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 16px;
+    }
+
+    .right-desc-suit {
+        width: min(100%, 560px);
+        height: auto;
+        gap: 24px;
+    }
+
+    .title-desc-suit {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .title-desc-suit > h1 {
+        line-height: 1.1;
+        margin-bottom: 12px;
+    }
+
+    .title-desc-suit > p {
+        line-height: 1.5;
+    }
+
+    .price-and-buttons {
+        gap: 20px;
+    }
+
+    .price-and-buttons > h3 {
+        padding-left: 0;
+    }
+
+    .buttons-div-top {
+        gap: 12px;
+    }
+
+    .quantity-button, .dropdown-select-button {
+        height: auto;
+        min-height: 44px;
+        box-sizing: border-box;
+        align-items: center;
+        border-width: 3px;
+        padding: 0 18px;
+        border-radius: 40px;
+    }
+
+    .quantity-button > h4:first-child,
+    .quantity-button > h4:last-child {
+        padding: 0 6px;
+    }
+
+    .quantity-button {
+        width: auto;
+        flex: 0 0 38%;
+        box-sizing: border-box;
+    }
+
+    .sizing-button {
+        width: auto;
+        flex: 1;
+        gap: 0;
+    }
+
+    .dropdown-options-div {
+        top: calc(100% + 8px);
+        width: 100%;
+    }
+
+    .dropdown-options {
+        font-size: 15px;
+        gap: 2px;
+        padding: 8px 18px;
+        border-width: 3px;
+    }
+
+    .each-drop-option {
+        padding: 8px 0;
+    }
+
+    .buttons-div-bottom {
+        width: 100%;
+        gap: 12px;
+        margin-top: 0;
+    }
+
+    .buttons-div-bottom > button {
+        flex: 1;
+        min-height: 48px;
+        padding: 10px 12px;
+        border-width: 3px;
+    }
+
+    .others-in-collection-div {
+        gap: 24px;
+    }
+
+    .others-header {
+        width: clamp(180px, 50vw, 384px);
+    }
+
+    /* The stamps keep their desktop proportions: --u is re-based on this row alone so
+       three stamps (or two per row on phones) fill the width exactly. */
+    .others-grid-container {
+        --u: calc((100vw - 2 * var(--gutter) - 28px) / 1500);
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .others-grid-container {
+        --u: calc((100vw - 2 * var(--gutter) - 28px) / 1000);
+        row-gap: 16px;
+    }
+}

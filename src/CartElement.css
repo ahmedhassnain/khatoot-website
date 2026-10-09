@@ -210,3 +210,76 @@
 
 
 
+
+
+/* Tablets and phones: the postcard takes the full width and the select / delete control
+   moves underneath it. Text on the card scales with the card itself (container units), with
+   a floor so it stays readable on small phones (the h1/h3 inside are 2em/1.17em of these). */
+@media (max-width: 900px) {
+    .left-right-overall {
+        container-type: inline-size;
+        flex-direction: column;
+        height: auto;
+        gap: 12px;
+    }
+
+    .element-container {
+        --u: calc(100cqw / 1043);
+        width: 100%;
+    }
+
+    .left-postcard-title {
+        width: 42%;
+        font-size: max(7.5px, calc(22 * var(--u)));
+        line-height: 1.15;
+    }
+
+    .left-postcard-details {
+        font-size: max(9.5px, calc(20 * var(--u)));
+    }
+
+    .color-picker {
+        width: 41%;
+    }
+
+    .color-options, .size-options {
+        gap: 4px;
+        white-space: nowrap;
+    }
+
+    .color-picker h3:last-child {
+        padding: 0 2px;
+    }
+
+    .quantity-and-price {
+        font-size: max(10.5px, calc(24 * var(--u)));
+    }
+
+    .quantity-postcard > button {
+        width: max(26px, calc(35 * var(--u)));
+        font-size: max(14px, calc(22 * var(--u)));
+        border-width: max(2px, calc(4 * var(--u)));
+    }
+
+    .right-element-container {
+        height: auto;
+        justify-content: flex-end;
+        padding-right: 4px;
+    }
+
+    .checkbox-wrapper {
+        align-items: center;
+    }
+
+    /* Delete appears to the left of the checkbox instead of below it */
+    .delete-option {
+        top: 0;
+        bottom: 0;
+        right: calc(100% + 12px);
+        margin: auto 0;
+        height: fit-content;
+        padding: 8px 18px;
+        border-width: 3px;
+        font-size: 15px;
+    }
+}

@@ -8,7 +8,7 @@ export default function Cart() {
     const { cartItems, checkoutUrl, getPrice } = useCart();
     const totalPrice = cartItems.reduce((sum, item) => sum + getPrice(item.id) * item.quantity, 0);
     return (
-        <section className = "overall-cart-container" style = {{ minHeight: `calc(${cartItems.length === 0 ? 1050 : (cartItems.length * 544.5) + 737.5} * var(--u))`}}>
+        <section className = "overall-cart-container" style = {{ "--cart-min-h": `calc(${cartItems.length === 0 ? 1050 : (cartItems.length * 544.5) + 737.5} * var(--u))`}}>
             <div className = "header-and-elements">
                 <div className = "header-cart">
                     <div className = "header-cart-left">

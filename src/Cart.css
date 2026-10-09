@@ -8,6 +8,7 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    min-height: var(--cart-min-h);
     /* padding: calc(100 * var(--u)) calc(50 * var(--u)) 0 calc(50 * var(--u)); */
 }
 
@@ -137,3 +138,91 @@
     opacity: 0.5;
 }
 
+
+
+@media (max-width: 900px) {
+    .overall-cart-container {
+        min-height: auto;
+        gap: 40px;
+    }
+
+    .header-and-elements {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 40px var(--gutter) 0;
+        gap: 32px;
+    }
+
+    .header-cart {
+        gap: 16px;
+    }
+
+    .header-cart-left > p {
+        margin-top: 6px;
+        line-height: 1.5;
+    }
+
+    .cart-logo {
+        width: clamp(72px, 22vw, 200px);
+        display: block;
+    }
+
+    .cart-elements {
+        gap: 32px;
+    }
+
+    .empty-cart-div {
+        padding: 32px 0;
+        text-align: center;
+        gap: 8px;
+    }
+
+    .cart-total-footer {
+        width: 100%;
+        height: auto;
+        box-sizing: border-box;
+        padding: 40px var(--gutter) 28px;
+        gap: 24px;
+        background-position: top center;
+    }
+
+    .cart-total-left {
+        height: auto;
+        width: min(60%, 420px);
+        gap: 10px;
+    }
+
+    .cart-total-right {
+        height: auto;
+    }
+
+    .checkout-tag {
+        height: auto;
+        width: clamp(110px, 26vw, 183px);
+    }
+}
+
+/* Phones: the total stamp and the checkout tag stack instead of sharing one row */
+@media (max-width: 600px) {
+    .cart-total-footer {
+        flex-direction: column;
+    }
+
+    .cart-total-left {
+        width: min(100%, 420px);
+    }
+}
+
+/* The totals are sized to the stamp outline they sit in, so the figures never spill past it */
+@media (max-width: 900px) {
+    .cart-total-left {
+        container-type: inline-size;
+    }
+
+    .total-quantity, .total-amount {
+        width: 80%;
+        gap: 8px;
+        font-size: 3.4cqw;
+        white-space: nowrap;
+    }
+}

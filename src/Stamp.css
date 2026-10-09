@@ -80,3 +80,19 @@
     height: calc(20 * var(--u));
     width: 100%;
 }
+
+/* Tablets and phones: a full-height hero leaves a portrait screen mostly empty around a
+   landscape stamp, so the stamp is sized to the screen width and the section hugs it
+   with even breathing room above and below. */
+@media (max-width: 900px) {
+    .section-stamp {
+        --s: min(calc((100vw - 2 * var(--gutter)) / 1010), 1px);
+        height: auto;
+    }
+
+    .stamp-border-div {
+        flex: none;
+        height: calc(628 * var(--s));
+        padding: clamp(48px, 14vw, 120px) 0;
+    }
+}

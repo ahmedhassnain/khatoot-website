@@ -73,3 +73,45 @@
     padding-bottom: calc(25 * var(--u));
 }
 
+
+/* Tablets and phones: the khaarji / baatni pair stays side by side; only the seals and
+   links shrink so both columns fit. */
+@media (max-width: 900px) {
+    .top-section-footer {
+        padding: 24px var(--gutter) 8px;
+        gap: 12px;
+    }
+
+    .khaarji-left-section, .baatni-right-section {
+        padding: 0;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .khaarji {
+        width: min(calc(282 * var(--u)), 38vw);
+    }
+
+    .baatni {
+        width: min(calc(274 * var(--u)), 37vw);
+    }
+
+    .khaarji-links > li, .baatni-links > li {
+        padding: 4px 0;
+    }
+
+    .bottom-section-footer {
+        padding: 16px var(--gutter) 24px;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 600px) {
+    .khaarji-links, .baatni-links {
+        font-size: clamp(9.5px, 2.7vw, 14px);
+    }
+
+    .bottom-section-footer {
+        font-size: 12px;
+    }
+}

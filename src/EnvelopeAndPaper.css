@@ -16,6 +16,7 @@
     justify-content: center;
     gap: calc(50 * var(--u));
     position: absolute;
+    top: var(--env-top);
     z-index: 2;
 }
 
@@ -96,4 +97,70 @@
 
 .paper-bg-right > h2 {
     font-family: 'Malevice-Ink';
+}
+
+/* Tablets and phones: the envelopes leave their absolute desktop positions and stack in the
+   page flow. Each envelope keeps its artwork's own proportions, and its paper slides out
+   from underneath it exactly as on desktop. */
+@media (max-width: 900px) {
+    .sub-section-one {
+        --env-w: min(calc(100vw - 2 * var(--gutter)), 640px);
+        flex-direction: column;
+        margin-bottom: calc(var(--env-w) * 0.1);
+    }
+
+    .envelope-bg-div {
+        position: relative;
+        top: auto;
+        width: var(--env-w);
+        height: auto;
+        gap: 5%;
+    }
+
+    .kamaliaEnvelope { aspect-ratio: 1010 / 613; background-size: 100% 100%; }
+    .doriaEnvelope { aspect-ratio: 926 / 603; background-size: 100% 100%; }
+    .irishCottonEnvelope { aspect-ratio: 938 / 597; background-size: 100% 100%; }
+    .doriaLongEnvelope { aspect-ratio: 936 / 613; background-size: 100% 100%; }
+
+    .paper-bg-div,
+    .paper-bg-div:hover {
+        top: 0;
+    }
+
+    /* As on desktop, only a strip of the paper peeks out below the envelope: most of it
+       stays tucked behind (--tuck). Type follows the desktop ratios to the envelope width
+       (title 3.2%, line 1.85%, price 2.4%) with floors so it stays readable on phones. */
+    .paper-bg-div {
+        --tuck: calc(var(--env-w) * 0.2);
+        position: relative;
+        box-sizing: border-box;
+        width: calc(var(--env-w) * 0.84);
+        height: auto;
+        margin-top: calc(var(--tuck) * -1);
+        /* The bottom 44px of the 854px-wide paper art is its airmail stripe and a transparent edge */
+        --stripe: calc(var(--env-w) * 0.84 * 44 / 854);
+        padding: calc(var(--tuck) + 12px) 5% calc(var(--stripe) + 12px) 5%;
+        align-items: center;
+        gap: 10px;
+        transition: none;
+    }
+
+    .paper-bg-left {
+        line-height: 1.2;
+        min-width: 0;
+    }
+
+    .paper-bg-left > h1 {
+        font-size: max(13px, calc(var(--env-w) * 0.032));
+        margin-bottom: 2px;
+    }
+
+    .paper-bg-left > h3 {
+        font-size: max(10.5px, calc(var(--env-w) * 0.0185));
+    }
+
+    .paper-bg-right > h2 {
+        font-size: max(12px, calc(var(--env-w) * 0.024));
+        white-space: nowrap;
+    }
 }

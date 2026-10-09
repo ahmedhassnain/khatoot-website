@@ -41,7 +41,7 @@ export default function EnvelopeAndPaper({ id }) {
                     const idOnRight = eachLetter.imgOrder[1].id;
                 return (
                     <div className = "sub-section-one">
-                        <div className = {`envelope-bg-div ${eachLetter.envClassName}`} style = {{ backgroundImage: `url(${eachLetter.envelopeImage})`, top: `calc(${eachLetter.id * 800} * var(--u))` }}>
+                        <div className = {`envelope-bg-div ${eachLetter.envClassName}`} style = {{ backgroundImage: `url(${eachLetter.envelopeImage})`, "--env-top": `calc(${eachLetter.id * 800} * var(--u))` }}>
                             <Link to = {`/product/pehla-khat/${idOnLeft}`} className = "img-on-env kamalia-one"><img src = {eachLetter.imgOrder[0].imgLeft} /></Link>
                             <Link to = {`/product/pehla-khat/${idOnRight}`} className = "img-on-env kamalia-two"><img src = {eachLetter.imgOrder[1].imgRight} /></Link>
                         </div>

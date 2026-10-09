@@ -19,3 +19,14 @@
     font-family: 'Malevice-Ink';
     color: #5B0000;
 }
+@media (max-width: 900px) {
+    .overall-container {
+        padding: 40px var(--gutter) 0;
+    }
+
+    .missing-header {
+        height: 60svh;
+        text-align: center;
+        gap: 12px;
+    }
+}

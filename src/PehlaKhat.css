@@ -30,3 +30,15 @@
 
 
 
+
+@media (max-width: 900px) {
+    .clothes-container {
+        height: auto;
+        box-sizing: border-box;
+    }
+
+    .header-section-khat {
+        width: clamp(200px, 55vw, 460px);
+        padding-bottom: 32px;
+    }
+}
