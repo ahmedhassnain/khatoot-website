@@ -18,11 +18,13 @@ import { useState } from "react";
 import { Link } from 'react-router-dom';
 import paperBackground from '../resources/pehla_khat/envelope-background.webp';
 import { useCart } from './CartContext';
+import { productKey, allProducts } from './Catalogue';
+import ColorPicker from './ColorPicker.jsx';
 import './EnvelopeAndPaper.css';
 
 export default function EnvelopeAndPaper({ id }) {
 
-    const { getPrice } = useCart();
+    const { formatPrice } = useCart();
 
     const envelopeDesc = [
         {id: 0, envClassName: "kamaliaEnvelope", paperClassName: "kamaliaPaper", envelopeImage: kamaliaEnvelope, imgOrder: [{id: 0, imgLeft: KamaliaImageOne}, {id: 1, imgRight: KamaliaImageTwo}], heading: "Kamalia Khaddar Set", subHeading: "Where tradition finds a new form"},
@@ -31,6 +33,8 @@ export default function EnvelopeAndPaper({ id }) {
         {id: 3, envClassName: "doriaLongEnvelope", paperClassName: "doriaLongPaper", envelopeImage: doriaLongEnvelope, imgOrder: [{id: 6, imgLeft: doriaLongOne}, {id: 7, imgRight: doriaLongTwo}],  heading: "Doria Cotton Long Shirt Set", subHeading: "A timeless story, reimagined"},
     ];
     const [currentId, setCurrentId] = useState(0);
+    // The paper under the envelope opens a letter listing every colour of this set
+    const [pickerOpen, setPickerOpen] = useState(false);
 
     return (
         <>
@@ -39,21 +43,44 @@ export default function EnvelopeAndPaper({ id }) {
                 if (eachLetter.id === id) {
                     const idOnLeft = eachLetter.imgOrder[0].id;
                     const idOnRight = eachLetter.imgOrder[1].id;
+                    const setTitle = allProducts.find((p) => p.collection === 'pehla-khat' && p.id === idOnLeft).title;
+                    const variants = allProducts.filter((p) => p.collection === 'pehla-khat' && p.title === setTitle);
                 return (
-                    <div className = "sub-section-one">
+                    <div className = "sub-section-one" key = {eachLetter.id}>
                         <div className = {`envelope-bg-div ${eachLetter.envClassName}`} style = {{ backgroundImage: `url(${eachLetter.envelopeImage})`, "--env-top": `calc(${eachLetter.id * 800} * var(--u))` }}>
                             <Link to = {`/product/pehla-khat/${idOnLeft}`} className = "img-on-env kamalia-one"><img src = {eachLetter.imgOrder[0].imgLeft} /></Link>
                             <Link to = {`/product/pehla-khat/${idOnRight}`} className = "img-on-env kamalia-two"><img src = {eachLetter.imgOrder[1].imgRight} /></Link>
                         </div>
-                        <div className = {`paper-bg-div ${eachLetter.paperClassName}`} style = {{ backgroundImage: `url(${paperBackground})`, "--base-top": `calc(${(eachLetter.id * 800) + 300} * var(--u))` }}>
+                        <div
+                            className = {`paper-bg-div ${eachLetter.paperClassName}`}
+                            style = {{ backgroundImage: `url(${paperBackground})`, "--base-top": `calc(${(eachLetter.id * 800) + 300} * var(--u))` }}
+                            role = "button"
+                            tabIndex = {0}
+                            aria-haspopup = "dialog"
+                            aria-label = {`${eachLetter.heading}: choose a colour`}
+                            onClick = {() => setPickerOpen(true)}
+                            onKeyDown = {(e) => {
+                                if (e.key === 'Enter' || e.key === ' ') {
+                                    e.preventDefault();
+                                    setPickerOpen(true);
+                                }
+                            }}
+                        >
                             <div className = "paper-bg-left">
                                 <h1>{eachLetter.heading}</h1>
                                 <h3>{eachLetter.subHeading}</h3>
                             </div>
                             <div className = "paper-bg-right">
-                                <h2>PKR {getPrice(idOnLeft)}</h2>
+                                <h2>{formatPrice(productKey('pehla-khat', idOnLeft))}</h2>
+                                <p className = "paper-colour-hint">in {variants.length} colours</p>
                             </div>
                         </div>
+                        <ColorPicker
+                            open = {pickerOpen}
+                            onClose = {() => setPickerOpen(false)}
+                            heading = {eachLetter.heading}
+                            variants = {variants}
+                        />
                     </div>
                     )
                 }

@@ -1,0 +1,203 @@
+/* An airmail letter: kraft paper edged with the red and blue stripe, cut from the same
+   letter artwork the inner pages use (border-image keeps the stripe even at this size). */
+.color-picker-letter {
+    width: min(92vw, calc(760 * var(--u)));
+    max-height: 90vh;
+    margin: auto;
+    padding: 0;
+    box-sizing: border-box;
+    border-style: solid;
+    border-color: transparent;
+    border-width: calc(18 * var(--u)) calc(18 * var(--u)) 0;
+    border-image: url(../resources/item_highlight/background_letter.webp) 40 40 0 40 fill / calc(18 * var(--u)) calc(18 * var(--u)) 0 round;
+    background: none;
+    box-shadow: 0 calc(12 * var(--u)) calc(40 * var(--u)) rgba(40, 22, 10, 0.45);
+    color: #5B0000;
+    overflow: auto;
+}
+
+.color-picker-letter[open] {
+    animation: letter-open 0.22s ease-out;
+}
+
+.color-picker-letter::backdrop {
+    background: rgba(40, 22, 10, 0.5);
+}
+
+.cpl-inner {
+    position: relative;
+    padding: calc(40 * var(--u)) calc(48 * var(--u)) calc(56 * var(--u));
+    text-align: center;
+    /* The letter art has no stripe along its bottom, so the airmail stripe is drawn here */
+    background: url(../resources/footers-top.webp) bottom / auto calc(16 * var(--u)) repeat-x;
+}
+
+.cpl-close {
+    position: absolute;
+    top: calc(14 * var(--u));
+    right: calc(14 * var(--u));
+    width: calc(36 * var(--u));
+    height: calc(36 * var(--u));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.cpl-close svg {
+    width: 60%;
+    height: 60%;
+    stroke: #5B0000;
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+
+.cpl-heading {
+    font-family: 'Malevice-Ink';
+    font-weight: 900;
+    font-size: calc(34 * var(--u));
+}
+
+.cpl-subheading {
+    font-family: 'Segoe Script';
+    font-size: calc(18 * var(--u));
+    margin-top: calc(4 * var(--u));
+}
+
+.cpl-options {
+    display: flex;
+    justify-content: center;
+    gap: calc(48 * var(--u));
+    margin-top: calc(32 * var(--u));
+    list-style: none;
+}
+
+.cpl-options > li {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+.cpl-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(6 * var(--u));
+    color: #5B0000;
+    text-decoration: none;
+}
+
+/* The product page's orange stamp frame, with the photo set in its window */
+.cpl-frame {
+    width: calc(250 * var(--u));
+    aspect-ratio: 455 / 572;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url(../resources/item_highlight/background_image_display.webp) center / 100% 100% no-repeat;
+    rotate: 0deg;
+    transition: rotate 0.1s ease-in-out;
+}
+
+.cpl-frame img {
+    width: 74%;
+    height: 80%;
+    object-fit: cover;
+    display: block;
+}
+
+.cpl-option:hover .cpl-frame, .cpl-option:focus-visible .cpl-frame {
+    rotate: var(--tilt);
+}
+
+.cpl-color {
+    margin-top: calc(8 * var(--u));
+    font-family: 'Malevice-Ink';
+    font-size: calc(22 * var(--u));
+}
+
+.cpl-price {
+    font-family: 'Malevice-Ink';
+    font-size: calc(16 * var(--u));
+    color: #4E321C;
+}
+
+.cpl-option:hover .cpl-color {
+    text-decoration: underline;
+    text-underline-offset: calc(4 * var(--u));
+}
+
+.cpl-close:focus-visible, .cpl-option:focus-visible {
+    outline: 2px dashed #5B0000;
+    outline-offset: 4px;
+}
+
+@keyframes letter-open {
+    from { transform: translateY(16px) scale(0.98); }
+    to { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .color-picker-letter[open] {
+        animation: none;
+    }
+
+    .cpl-frame {
+        transition: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .color-picker-letter {
+        width: calc(100vw - 2 * var(--gutter));
+        max-width: 560px;
+        border-width: 12px 12px 0;
+        border-image-width: 12px 12px 0;
+    }
+
+    .cpl-inner {
+        padding: 28px 16px 34px;
+        background-size: auto 11px;
+    }
+
+    .cpl-close {
+        top: 6px;
+        right: 6px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .cpl-heading {
+        font-size: clamp(20px, 6vw, 28px);
+        padding: 0 32px;
+    }
+
+    .cpl-subheading {
+        font-size: 14px;
+    }
+
+    .cpl-options {
+        gap: 16px;
+        margin-top: 20px;
+    }
+
+    .cpl-options > li {
+        flex: 1;
+        max-width: 220px;
+    }
+
+    .cpl-frame {
+        width: 100%;
+    }
+
+    .cpl-color {
+        font-size: 16px;
+    }
+
+    .cpl-price {
+        font-size: 13px;
+    }
+}

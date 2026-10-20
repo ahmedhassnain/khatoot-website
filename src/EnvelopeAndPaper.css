@@ -95,8 +95,33 @@
     font-family: 'Segoe Script';
 }
 
-.paper-bg-right > h2 {
-    font-family: 'Malevice-Ink';
+.paper-bg-right > h2 {
+    font-family: 'Malevice-Ink';
+}
+
+/* The paper opens the colour picker letter */
+.paper-bg-div {
+    cursor: pointer;
+}
+
+.paper-bg-div:focus-visible {
+    outline: 2px dashed #5B0000;
+    outline-offset: -8px;
+}
+
+.paper-bg-right {
+    text-align: right;
+}
+
+.paper-colour-hint {
+    font-family: 'Segoe Script';
+    font-size: calc(14 * var(--u));
+    margin-top: calc(2 * var(--u));
+}
+
+.paper-bg-div:hover .paper-colour-hint {
+    text-decoration: underline;
+    text-underline-offset: calc(3 * var(--u));
 }
 
 /* Tablets and phones: the envelopes leave their absolute desktop positions and stack in the
@@ -159,8 +184,13 @@
         font-size: max(10.5px, calc(var(--env-w) * 0.0185));
     }
 
-    .paper-bg-right > h2 {
-        font-size: max(12px, calc(var(--env-w) * 0.024));
+    .paper-bg-right > h2 {
+        font-size: max(12px, calc(var(--env-w) * 0.024));
+        white-space: nowrap;
+    }
+
+    .paper-colour-hint {
+        font-size: max(10px, calc(var(--env-w) * 0.017));
         white-space: nowrap;
     }
 }

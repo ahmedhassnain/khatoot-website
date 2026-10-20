@@ -15,8 +15,10 @@ export default function Footer() {
                             <img className = "khaarji" src = {kharjiHeader} />
                         </div>
                         <ul className = "khaarji-links">
-                            <li><Link to = "/" className = "footer-link">Pehla Khat</Link></li>
-                            <li><Link to = "about" className = "footer-link">About Us</Link></li>
+                            <li><Link to = "/" className = "footer-link">Home</Link></li>
+                            <li><Link to = "/pehla-khat" className = "footer-link">Pehla Khat</Link></li>
+                            <li><Link to = "/kaifiyat" className = "footer-link">Kaifiyat</Link></li>
+                            <li><Link to = "/about" className = "footer-link">About Us</Link></li>
                             <li><Link to = "/missing" className = "footer-link">Contact</Link></li>
                         </ul>
                     </div>

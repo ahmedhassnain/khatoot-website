@@ -1,6 +1,7 @@
 import { Outlet, ScrollRestoration } from 'react-router-dom';
 import Navbar from './Navbar.jsx';
 import Footer from './Footer.jsx';
+import { ToastViewport } from './Toast.jsx';
 
 export default function Layout() {
   return (
@@ -9,6 +10,7 @@ export default function Layout() {
       <ScrollRestoration />
       <Outlet />   
       <Footer />
+      <ToastViewport />
     </>
   );
 }

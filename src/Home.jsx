@@ -1,11 +1,11 @@
 import Stamp from './Stamp.jsx';
-import PehlaKhat from './PehlaKhat.jsx'
+import Kaifiyat from './Kaifiyat.jsx'
 
 export default function Home() {
     return (
         <>
          <Stamp />
-         <PehlaKhat />
+         <Kaifiyat />
         </>
     )
 }

@@ -2,9 +2,36 @@ import './Navbar.css';
 import khatootLogo from '../resources/khatoot-logo.webp';
 import { Link } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
-import pehlaKhatDetails from './PehlaKhatDetails.js';
+import { allProducts } from './Catalogue.js';
+
+// The collections listed under Catalogue, in the order they appear
+const catalogueLinks = [
+    { label: "Pehla Khat", to: "/pehla-khat" },
+    { label: "Kaifiyat", to: "/kaifiyat" },
+];
 
 export default function Navbar() {
+    const [catalogueOpen, setCatalogueOpen] = useState(false);
+    const catalogueRef = useRef(null);
+
+    useEffect(() => {
+        if (!catalogueOpen) return;
+        function handleClickOutside(e) {
+            if (catalogueRef.current && !catalogueRef.current.contains(e.target)) {
+                setCatalogueOpen(false);
+            }
+        }
+        function handleEscape(e) {
+            if (e.key === 'Escape') setCatalogueOpen(false);
+        }
+        document.addEventListener('mousedown', handleClickOutside);
+        document.addEventListener('keydown', handleEscape);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+            document.removeEventListener('keydown', handleEscape);
+        };
+    }, [catalogueOpen]);
+
     const [searchOpen, setSearchOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const searchRef = useRef(null);
@@ -21,8 +48,8 @@ export default function Navbar() {
     }, [searchOpen]);
 
     const query = searchQuery.trim().toLowerCase();
-    const searchResults = query === '' ? [] : pehlaKhatDetails.filter((product) =>
-        product.title.toLowerCase().includes(query) || product.color.toLowerCase().includes(query)
+    const searchResults = query === '' ? [] : allProducts.filter((product) =>
+        product.title.toLowerCase().includes(query) || (product.color ?? '').toLowerCase().includes(query)
     );
 
     function closeSearch() {
@@ -32,6 +59,7 @@ export default function Navbar() {
 
     // Phone menu: the four nav options drop down from the hamburger
     const [menuOpen, setMenuOpen] = useState(false);
+    const [menuCatalogueOpen, setMenuCatalogueOpen] = useState(false);
     const [menuSearchOpen, setMenuSearchOpen] = useState(false);
     const menuRef = useRef(null);
 
@@ -55,6 +83,7 @@ export default function Navbar() {
 
     function closeMenu() {
         setMenuOpen(false);
+        setMenuCatalogueOpen(false);
         setMenuSearchOpen(false);
         setSearchQuery('');
     }
@@ -67,9 +96,9 @@ export default function Navbar() {
                     <li className = "search-no-results">No matches found.</li>
                 ) : (
                     searchResults.map((product) => (
-                        <li key = {product.id} className = "search-result">
-                            <Link to = {`/product/pehla-khat/${product.id}`} onClick = {() => { closeSearch(); closeMenu(); }}>
-                                {product.title} ({product.color})
+                        <li key = {product.key} className = "search-result">
+                            <Link to = {`/product/${product.collection}/${product.id}`} onClick = {() => { closeSearch(); closeMenu(); }}>
+                                {product.color ? `${product.title} (${product.color})` : product.title}
                             </Link>
                         </li>
                     ))
@@ -83,7 +112,32 @@ export default function Navbar() {
               <nav>
                 <ul className = "navbar-container">
                   <div className = "left-div">
-                    <li><Link to = "/" className = "nav-link launch-nav-link">Pehla Khat</Link></li>
+                    <li><Link to = "/" className = "nav-link">Home</Link></li>
+                    <li className = "catalogue-item" ref = {catalogueRef}>
+                        <button
+                            type = "button"
+                            className = "nav-link catalogue-nav-link"
+                            aria-expanded = {catalogueOpen}
+                            aria-controls = "catalogue-panel"
+                            onClick = {() => setCatalogueOpen((open) => !open)}
+                        >
+                            Catalogue
+                        </button>
+                        {catalogueOpen && (
+                            <ul id = "catalogue-panel" className = "catalogue-panel">
+                                {catalogueLinks.map((link) => (
+                                    <li key = {link.to}>
+                                        <Link to = {link.to} className = "nav-link" onClick = {() => setCatalogueOpen(false)}>{link.label}</Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                    </li>
+                  </div>
+                  <div className = "center-div">
+                    <Link to = "/" aria-label = "Khatoot home"><img className = "khatoot-logo" src= { khatootLogo } alt = "Khatoot" /></Link>
+                  </div>
+                  <div className = "right-div">
                     <li className = "search-item" ref = {searchRef}>
                         <span
                             className = "nav-link search-nav-link"
@@ -105,12 +159,6 @@ export default function Navbar() {
                             </div>
                         )}
                     </li>
-                  </div>
-                  <div className = "center-div">
-                    <img className = "khatoot-logo" src= { khatootLogo } />
-                  </div>
-                  <div className = "right-div">
-                    <li><Link to = "/about" className = "nav-link about-nav-link">About</Link></li>
                     <li><Link to = "/cart" className = "nav-link cart-nav-link">Cart</Link></li>
                   </div>
                 </ul>
@@ -147,7 +195,26 @@ export default function Navbar() {
                     {menuOpen && (
                         <div id = "mobile-menu-panel" className = "mobile-menu-panel">
                             <ul className = "mobile-menu-list">
-                                <li><Link to = "/" className = "nav-link" onClick = {closeMenu}>Pehla Khat</Link></li>
+                                <li><Link to = "/" className = "nav-link" onClick = {closeMenu}>Home</Link></li>
+                                <li>
+                                    <button
+                                        type = "button"
+                                        className = "nav-link mobile-search-toggle"
+                                        aria-expanded = {menuCatalogueOpen}
+                                        onClick = {() => setMenuCatalogueOpen((open) => !open)}
+                                    >
+                                        Catalogue
+                                    </button>
+                                    {menuCatalogueOpen && (
+                                        <ul className = "mobile-catalogue-list">
+                                            {catalogueLinks.map((link) => (
+                                                <li key = {link.to}>
+                                                    <Link to = {link.to} className = "nav-link" onClick = {closeMenu}>{link.label}</Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                </li>
                                 <li>
                                     <button
                                         type = "button"
@@ -171,7 +238,6 @@ export default function Navbar() {
                                         </div>
                                     )}
                                 </li>
-                                <li><Link to = "/about" className = "nav-link" onClick = {closeMenu}>About</Link></li>
                                 <li><Link to = "/cart" className = "nav-link" onClick = {closeMenu}>Cart</Link></li>
                             </ul>
                         </div>

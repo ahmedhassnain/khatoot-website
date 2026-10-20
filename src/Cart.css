@@ -59,14 +59,59 @@
     justify-content: center;
 }
 
+/* While a saved cart loads: the Khatoot seal presses down gently above a handwritten line */
+.cart-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(18 * var(--u));
+    padding: calc(80 * var(--u)) 0;
+    color: #5B0000;
+    font-family: 'Segoe Script';
+    font-size: calc(22 * var(--u));
+}
+
+.cart-loading-seal {
+    width: calc(140 * var(--u));
+    animation: seal-press 1.4s ease-in-out infinite;
+    filter: drop-shadow(0 calc(4 * var(--u)) calc(8 * var(--u)) rgba(60, 20, 10, 0.3));
+}
+
+@keyframes seal-press {
+    0%, 100% { transform: scale(1) rotate(-4deg); }
+    50% { transform: scale(0.92) rotate(2deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cart-loading-seal {
+        animation: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .cart-loading {
+        padding: 48px 0;
+        gap: 14px;
+        font-size: 16px;
+    }
+
+    .cart-loading-seal {
+        width: 96px;
+    }
+}
+
 .cart-total-footer {
+    /* The background art opens with an airmail stripe 35/1575 of its width tall. The art is
+       scaled to the footer's full width (88vw plus side padding), so that stripe is added to the
+       top padding: the stamp then sits with equal space above (below the stripe) and below. */
+    --stripe: calc((88vw + 100 * var(--u)) * 35 / 1575);
     flex-shrink: 0;
     background-image: url(../resources/cart_elements/fixed_cart_total.webp);
     background-size: cover;
     background-repeat: no-repeat;
     width: 88vw;
     height: calc(284 * var(--u));
-    padding: calc(29 * var(--u)) calc(50 * var(--u));
+    padding: calc(29 * var(--u) + var(--stripe)) calc(50 * var(--u)) calc(29 * var(--u));
     display: flex;
     justify-content: center;
     align-items: center;
@@ -177,13 +222,20 @@
         gap: 8px;
     }
 
+    /* Here the footer's height follows its content, so "cover" alone would scale the art by
+       height on some widths and change the stripe's size. The top layer pins the art to the
+       footer's width (stripe = width x 35/1575, the footer spans the page inside the 14px
+       airmail border); the lower "cover" layer fills whatever height is left under it. */
     .cart-total-footer {
+        --stripe: calc((100vw - 28px) * 35 / 1575);
         width: 100%;
         height: auto;
         box-sizing: border-box;
-        padding: 40px var(--gutter) 28px;
+        padding: calc(28px + var(--stripe)) var(--gutter) 28px;
         gap: 24px;
-        background-position: top center;
+        background:
+            url(../resources/cart_elements/fixed_cart_total.webp) top center / 100% auto no-repeat,
+            url(../resources/cart_elements/fixed_cart_total.webp) bottom center / cover no-repeat;
     }
 
     .cart-total-left {
@@ -224,5 +276,107 @@
         gap: 8px;
         font-size: 3.4cqw;
         white-space: nowrap;
+    }
+}
+
+/* Postage strip: a slim paper band pinned to the bottom of the screen with the airmail stripe
+   along its top edge. It only shows while the totals stamp is off screen; pressing it scrolls
+   down to the totals. */
+.cart-postage-strip {
+    position: fixed;
+    left: 50%;
+    bottom: 0;
+    z-index: 40;
+    width: min(88vw, calc(900 * var(--u)));
+    transform: translate(-50%, 110%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: calc(24 * var(--u));
+    box-sizing: border-box;
+    padding: calc(22 * var(--u)) calc(36 * var(--u)) calc(16 * var(--u));
+    border: none;
+    border-radius: calc(6 * var(--u)) calc(6 * var(--u)) 0 0;
+    background:
+        url(../resources/footers-top.webp) top / auto calc(10 * var(--u)) repeat-x,
+        url(../resources/navbar/navbar-bg.webp) center / cover;
+    box-shadow: 0 calc(-4 * var(--u)) calc(18 * var(--u)) rgba(78, 50, 28, 0.25);
+    color: #5B0000;
+    font-family: 'Malevice-Ink';
+    cursor: pointer;
+    transition: transform 0.25s ease-out;
+}
+
+.cart-postage-strip.is-shown {
+    transform: translate(-50%, 0);
+}
+
+.strip-summary {
+    display: flex;
+    align-items: center;
+    gap: calc(14 * var(--u));
+    font-size: calc(22 * var(--u));
+    white-space: nowrap;
+}
+
+/* A small inked dot, like a postmark, between the count and the price */
+.strip-divider {
+    width: calc(7 * var(--u));
+    height: calc(7 * var(--u));
+    border-radius: 50%;
+    background: #5B0000;
+    opacity: 0.6;
+}
+
+.strip-action {
+    font-size: calc(18 * var(--u));
+    border: calc(2 * var(--u)) solid #5B0000;
+    border-radius: calc(3 * var(--u));
+    padding: calc(6 * var(--u)) calc(16 * var(--u));
+    white-space: nowrap;
+    transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+.cart-postage-strip:hover .strip-action {
+    background-color: #5B0000;
+    color: #F3E9D6;
+}
+
+.cart-postage-strip:focus-visible {
+    outline: 2px dashed #5B0000;
+    outline-offset: -6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cart-postage-strip, .strip-action {
+        transition: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .cart-postage-strip {
+        width: 100%;
+        border-radius: 0;
+        gap: 12px;
+        padding: 18px var(--gutter) calc(12px + env(safe-area-inset-bottom));
+        background:
+            url(../resources/footers-top.webp) top / auto 8px repeat-x,
+            url(../resources/navbar/navbar-bg.webp) center / cover;
+    }
+
+    .strip-summary {
+        font-size: 16px;
+        gap: 10px;
+    }
+
+    .strip-divider {
+        width: 5px;
+        height: 5px;
+    }
+
+    .strip-action {
+        font-size: 14px;
+        border-width: 1.5px;
+        padding: 6px 12px;
     }
 }

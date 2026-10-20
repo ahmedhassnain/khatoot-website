@@ -1,0 +1,132 @@
+/* Everything is placed on the postcard art in percentages of the card, and sized in cqw
+   (card width), so it stays on the art's ruled lines at any size. The dashed address lines
+   sit 40.7% and 25.4% up from the card's bottom edge; the divider is just left of centre. */
+.postcard-note {
+    --line-one: 40.7%;
+    --line-two: 25.4%;
+    --on-line: 1.2%;
+    container-type: inline-size;
+    position: relative;
+    width: calc(860 * var(--u));
+    aspect-ratio: 1355 / 619;
+    background: url(../resources/cart_elements/post-card-bg.webp) center / 100% 100% no-repeat;
+    rotate: -0.6deg;
+    color: #4E321C;
+}
+
+/* Left half: the note itself, its last line resting on the first dashed line */
+.pn-message {
+    position: absolute;
+    left: 6%;
+    width: 39%;
+    bottom: calc(var(--line-one) + var(--on-line));
+    font-family: 'Segoe Script';
+    font-weight: bold;
+    font-size: max(13px, 3.2cqw);
+    line-height: 1.25;
+}
+
+.pn-signature {
+    position: absolute;
+    left: 6%;
+    width: 39%;
+    bottom: calc(var(--line-two) + var(--on-line));
+    font-family: 'Malevice-Ink';
+    font-size: max(10px, 1.7cqw);
+}
+
+/* Right half: postage in the corner, sealed over with the Khatoot wax seal */
+.pn-stamp {
+    position: absolute;
+    top: 9%;
+    right: 5.5%;
+    width: 11%;
+    rotate: 3deg;
+    box-shadow: 0 0.3cqw 0.8cqw rgba(78, 50, 28, 0.35);
+}
+
+.pn-seal {
+    position: absolute;
+    top: 20%;
+    right: 12%;
+    width: 13%;
+    rotate: -10deg;
+    filter: drop-shadow(0 0.3cqw 0.5cqw rgba(60, 20, 10, 0.35));
+}
+
+.pn-prompt {
+    position: absolute;
+    left: 55%;
+    width: 39%;
+    bottom: calc(var(--line-one) + var(--on-line));
+    font-family: 'Segoe Script';
+    font-weight: bold;
+    font-size: max(10.5px, 1.8cqw);
+}
+
+.pn-links {
+    position: absolute;
+    left: 55%;
+    width: 39%;
+    bottom: calc(var(--line-two) + var(--on-line));
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.6cqw;
+}
+
+.pn-link {
+    font-family: 'Malevice-Ink';
+    font-size: max(11px, 1.8cqw);
+    color: #5B0000;
+    text-decoration: none;
+    white-space: nowrap;
+    border: max(1.5px, 0.22cqw) solid #5B0000;
+    border-radius: 0.3cqw;
+    padding: 0.5cqw 1.5cqw;
+    transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+.pn-link:hover {
+    background-color: #5B0000;
+    color: #F3E9D6;
+}
+
+.pn-link:focus-visible {
+    outline: 2px dashed #5B0000;
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pn-link {
+        transition: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .postcard-note {
+        width: min(100%, 640px);
+    }
+}
+
+/* Phones: the card is drawn a little taller than the art's proportions so the handwriting has
+   room at a readable size; the ruled lines stay where the percentages put them. */
+@media (max-width: 600px) {
+    .postcard-note {
+        aspect-ratio: 1355 / 860;
+        rotate: none;
+    }
+
+    .pn-message {
+        font-size: max(13px, 3.6cqw);
+    }
+
+    .pn-stamp {
+        width: 13%;
+    }
+
+    .pn-seal {
+        width: 15%;
+        top: 19%;
+        right: 13%;
+    }
+}

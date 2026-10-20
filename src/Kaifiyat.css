@@ -1,0 +1,198 @@
+/* Kaifiyat follows the Pehla Khat section: same backdrop, same taped heading, envelopes stacked
+   down the page with a paper slip peeking out from under each one. The envelopes stay in the
+   page flow (no absolute offsets), so adding or removing an article needs no height changes. */
+.kaifiyat-container {
+    width: 100%;
+    background-image: url(../resources/section-two-background.webp);
+    background-size: contain;
+    background-position: center;
+    padding-top: calc(112 * var(--u));
+    padding-bottom: calc(112 * var(--u));
+}
+
+.header-section-kaifiyat {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-section-kaifiyat-img {
+    width: 30%;
+    padding-bottom: calc(40 * var(--u));
+}
+
+.kaifiyat-letters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.kaifiyat-letter {
+    --env-w: calc(888 * var(--u));
+    width: var(--env-w);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: calc(110 * var(--u));
+}
+
+.kaifiyat-letter:last-child {
+    margin-bottom: 0;
+}
+
+.kaifiyat-envelope {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    aspect-ratio: 630 / 397;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.kaifiyat-photo {
+    position: absolute;
+    display: block;
+    rotate: 0deg;
+    transition: rotate 0.1s ease-in-out;
+}
+
+.kaifiyat-photo img {
+    width: 100%;
+    display: block;
+}
+
+.kaifiyat-photo:hover {
+    rotate: var(--tilt);
+}
+
+/* The paper art is anchored to its bottom edge, so only its lower strip (with the airmail
+   stripe) shows below the envelope; the rest stays tucked behind (--tuck). */
+.kaifiyat-paper {
+    --tuck: calc(60 * var(--u));
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+    width: 95.2%;
+    height: calc(var(--tuck) + 142 * var(--u));
+    margin-top: calc(var(--tuck) * -1);
+    padding: 0 calc(36 * var(--u)) calc(56 * var(--u));
+    background-size: 100% auto;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+    gap: calc(20 * var(--u));
+    color: #5B0000;
+    font-size: calc(16 * var(--u));
+    transition: transform 0.2s ease-in-out;
+}
+
+.kaifiyat-paper:hover {
+    transform: translateY(calc(10 * var(--u)));
+}
+
+.kaifiyat-paper-left {
+    line-height: calc(20 * var(--u));
+}
+
+.kaifiyat-paper-left > h1 {
+    font-family: 'Malevice-Ink';
+    font-weight: 900;
+}
+
+.kaifiyat-paper-left > h3 {
+    font-family: 'Segoe Script';
+}
+
+.kaifiyat-view-more {
+    flex-shrink: 0;
+    font-family: 'Segoe Script';
+    font-weight: bold;
+    font-size: calc(18 * var(--u));
+    line-height: 1;
+    color: #5B0000;
+    text-decoration: none;
+    white-space: nowrap;
+    border: calc(2 * var(--u)) solid #5B0000;
+    border-radius: calc(3 * var(--u));
+    padding: calc(8 * var(--u)) calc(18 * var(--u));
+    margin-bottom: calc(4 * var(--u));
+    transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+.kaifiyat-view-more:hover {
+    background-color: #5B0000;
+    color: #F3E9D6;
+}
+
+.kaifiyat-view-more:focus-visible {
+    outline: 2px solid #5B0000;
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .kaifiyat-photo, .kaifiyat-paper, .kaifiyat-view-more {
+        transition: none;
+    }
+}
+
+/* Tablets and phones: the envelope spans the screen (up to 640px) and every size follows its
+   width, so photos, paper and type keep the desktop proportions. */
+@media (max-width: 900px) {
+    /* The stamp hero above already leaves breathing room under itself, so the heading
+       sits closer to the top of this section than the desktop 112u */
+    .kaifiyat-container {
+        box-sizing: border-box;
+        padding-top: clamp(24px, 7vw, 56px);
+    }
+
+    .header-section-kaifiyat-img {
+        width: clamp(200px, 55vw, 460px);
+        padding-bottom: 32px;
+    }
+
+    .kaifiyat-letter {
+        --env-w: min(calc(100vw - 2 * var(--gutter)), 640px);
+        margin-bottom: calc(var(--env-w) * 0.12);
+    }
+
+    .kaifiyat-paper,
+    .kaifiyat-paper:hover {
+        transform: none;
+    }
+
+    /* The bottom ~3.6% of the envelope width is the airmail stripe at this paper width */
+    .kaifiyat-paper {
+        --tuck: calc(var(--env-w) * 0.06);
+        --stripe: calc(var(--env-w) * 0.036);
+        height: auto;
+        padding: calc(var(--tuck) + 12px) 4.5% calc(var(--stripe) + 12px);
+        align-items: center;
+        gap: 10px;
+        transition: none;
+    }
+
+    .kaifiyat-paper-left {
+        line-height: 1.2;
+        min-width: 0;
+    }
+
+    .kaifiyat-paper-left > h1 {
+        font-size: max(15px, calc(var(--env-w) * 0.036));
+        margin-bottom: 2px;
+    }
+
+    .kaifiyat-paper-left > h3 {
+        font-size: max(10.5px, calc(var(--env-w) * 0.021));
+    }
+
+    .kaifiyat-view-more {
+        font-size: max(11px, calc(var(--env-w) * 0.02));
+        border-width: 1.5px;
+        padding: 6px 10px;
+        margin-bottom: 0;
+    }
+}

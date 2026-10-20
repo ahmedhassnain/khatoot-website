@@ -1,9 +1,9 @@
 import './CartElement.css'
-import pehlaKhatDetails from './PehlaKhatDetails';
+import { allProducts } from './Catalogue';
 import { useState } from 'react';
 import { useCart } from './CartContext';
 
-export default function CartElement({ id, size, quantity, price }) {
+export default function CartElement({ productKey, size, quantity, price }) {
 
     const { changeColor, changeSize, changeQuantity, removeFromCart } = useCart();
     const [selected, setSelected] = useState(false);
@@ -11,11 +11,12 @@ export default function CartElement({ id, size, quantity, price }) {
     const [sizeOpen, setSizeOpen] = useState(false);
     const sizes = ["Small", "Medium", "Large", "X-Large"];
 
-    const item = pehlaKhatDetails.find((eachItem) => eachItem.id === id);
+    const item = allProducts.find((eachItem) => eachItem.key === productKey);
     if (!item) return null;
 
-    // Every entry sharing this title is another color of the same suit
-    const variants = pehlaKhatDetails.filter((eachItem) => eachItem.title === item.title);
+    // Every entry in the same collection sharing this title is another color of the same suit.
+    // Pieces that come in a single color (Kaifiyat) have no color field and skip the picker.
+    const variants = allProducts.filter((eachItem) => eachItem.collection === item.collection && eachItem.title === item.title);
 
     return (
         <section className = "left-right-overall">
@@ -26,6 +27,7 @@ export default function CartElement({ id, size, quantity, price }) {
                             <h1>{ item.title }</h1>
                         </div>
                         <div className = "left-postcard-details">
+                            {item.color && (
                             <div className = "color-picker">
                                 <div className = "color-options">
                                     <h3>Color:</h3>
@@ -36,9 +38,9 @@ export default function CartElement({ id, size, quantity, price }) {
                                     <ul className = "color-dropdown">
                                         {variants.map((variant) => (
                                             <li
-                                                key = {variant.id}
+                                                key = {variant.key}
                                                 className = "each-color-option"
-                                                onClick = {() => { changeColor(item.id, variant.id); setColorOpen(false); }}
+                                                onClick = {() => { changeColor(item.key, variant.key); setColorOpen(false); }}
                                             >
                                                 {variant.color}
                                             </li>
@@ -46,6 +48,7 @@ export default function CartElement({ id, size, quantity, price }) {
                                     </ul>
                                 )}
                             </div>
+                            )}
                             <div className = "color-picker">
                                 <div className = "size-options">
                                     <h3>Size:</h3>
@@ -58,7 +61,7 @@ export default function CartElement({ id, size, quantity, price }) {
                                             <li
                                                 key = {eachSize}
                                                 className = "each-color-option"
-                                                onClick = {() => { changeSize(item.id, eachSize); setSizeOpen(false); }}
+                                                onClick = {() => { changeSize(item.key, eachSize); setSizeOpen(false); }}
                                             >
                                                 {eachSize}
                                             </li>
@@ -74,9 +77,9 @@ export default function CartElement({ id, size, quantity, price }) {
                         </div>
                         <div className = "quantity-and-price">
                             <div className = "quantity-postcard">
-                                <button onClick = {() => changeQuantity(item.id, -1)}>-</button>
+                                <button onClick = {() => changeQuantity(item.key, -1)}>-</button>
                                 <h3>{quantity}</h3>
-                                <button onClick = {() => changeQuantity(item.id, 1)}>+</button>
+                                <button onClick = {() => changeQuantity(item.key, 1)}>+</button>
                             </div>
                             <div className = "price-postcard">
                                 <h3>PKR {quantity * price}</h3>
@@ -103,7 +106,7 @@ export default function CartElement({ id, size, quantity, price }) {
                     >
                     </div>
                     {selected && (
-                        <button className = "delete-option" onClick = {() => removeFromCart(item.id)}>
+                        <button className = "delete-option" onClick = {() => removeFromCart(item.key)}>
                             Delete
                         </button>
                     )}

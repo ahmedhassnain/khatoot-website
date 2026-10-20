@@ -39,7 +39,46 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}   
+}
+
+/* Slideshow arrows: a small red wax seal with a cream chevron pressed into it */
+.button-left-ss > .wax-arrow, .button-right-ss > .wax-arrow {
+    width: calc(58 * var(--u));
+    height: calc(58 * var(--u));
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: url(../resources/wax_button.webp) center / contain no-repeat;
+    filter: drop-shadow(0 calc(3 * var(--u)) calc(4 * var(--u)) rgba(60, 20, 10, 0.4));
+    cursor: pointer;
+    transition: transform 0.12s ease-out;
+}
+
+.wax-arrow svg {
+    width: 52%;
+    height: 52%;
+    fill: none;
+    stroke: #F3E9D6;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 1px 0 rgba(60, 10, 10, 0.55));
+}
+
+.button-left-ss > .wax-arrow:hover { transform: rotate(-8deg) scale(1.06); }
+.button-right-ss > .wax-arrow:hover { transform: rotate(8deg) scale(1.06); }
+.wax-arrow:active { transform: scale(0.92); }
+
+.wax-arrow:focus-visible {
+    outline: 2px dashed #F3E9D6;
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .wax-arrow {
+        transition: none;
+    }
+}
 
 .left-slideshow-img {
     background-size: contain;
@@ -171,6 +210,23 @@
     transition: background 0.1s linear;
 }
 
+/* Not on Shopify yet: the buttons stay visible but can't be pressed */
+.buttons-div-bottom > button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.buttons-div-bottom > button:disabled:hover {
+    background: none;
+    color: #5B0000;
+    border-radius: 0px;
+}
+
+.buttons-div-bottom > .buy-button:disabled:hover {
+    background: #5B0000;
+    color: #C9A352;
+}
+
 .others-in-collection-div {
     width: 100%;
     display: flex;
@@ -201,6 +257,10 @@
     justify-content: baseline;
 }
 
+.others-grid-spread {
+    justify-content: space-around;
+}
+
 .ind-dress-stamp {
     background-image: url(../resources/item_highlight/stamp_border_letter.webp);
     width: calc(500 * var(--u));
@@ -225,15 +285,26 @@
     justify-content: flex-end;
 }
 
+/* Kaifiyat envelopes sit on the bottom of the stamp so they run into the footer's airmail stripe */
+.ind-dress-envelope-bottom {
+    background-position: center bottom;
+}
+
 .image-dress {
-    width: calc(320 * var(--u));
-    height: calc(420 * var(--u));
+    width: calc(300 * var(--u));
+    height: calc(400 * var(--u));
     object-fit: cover;
     rotate: calc(0deg);
     transition: rotate 0.1s linear;
     padding-bottom: 5px;
 }
 
+
+/* Polaroids keep their white border and tilt, so they're fitted whole rather than cropped */
+.image-dress-polaroid {
+    object-fit: contain;
+    object-position: bottom;
+}
 
 .image-dress:hover {
     rotate: calc(2deg);
@@ -244,9 +315,6 @@
     z-index: 10;
     top: calc(50 * var(--u));
     width: calc(200 * var(--u));
-    background: none;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
 }
 
 .dropdown-options {
@@ -254,10 +322,24 @@
     flex-direction: column;
     gap: calc(5 * var(--u));
     font-size: calc(12 * var(--u));
-    padding: calc(10 * var(--u)) calc(20 * var(--u)) calc(10 * var(--u)) calc(20 * var(--u));
+    padding: calc(14 * var(--u)) calc(20 * var(--u)) calc(6 * var(--u));
     line-height: 1.2;
-    border: calc(5 * var(--u)) solid #5B0000;
+    background:
+        url(../resources/footers-top.webp) top / auto calc(8 * var(--u)) repeat-x,
+        url(../resources/navbar/navbar-bg.webp) center / cover;
+    border: calc(2 * var(--u)) solid #5B0000;
+    border-radius: calc(4 * var(--u));
+    box-shadow: 0 calc(6 * var(--u)) calc(18 * var(--u)) rgba(78, 50, 28, 0.3);
     color: #5B0000;
+}
+
+.each-drop-option + .each-drop-option {
+    border-top: max(1.5px, calc(2 * var(--u))) dashed rgba(91, 0, 0, 0.35);
+}
+
+.each-drop-option:hover {
+    text-decoration: underline;
+    text-underline-offset: calc(3 * var(--u));
 }
 
 .each-drop-option {
@@ -301,8 +383,15 @@
         font-size: 16px;
     }
 
+    .button-left-ss > .wax-arrow, .button-right-ss > .wax-arrow {
+        width: 44px;
+        height: 44px;
+    }
+
+    /* The stamp frame's visible edge is 93% of its 480px box (the art has a transparent
+       margin), so the text block matches that and stays inside the frame's edges */
     .right-desc-suit {
-        width: min(100%, 560px);
+        width: min(93%, 448px);
         height: auto;
         gap: 24px;
     }
@@ -368,8 +457,8 @@
     .dropdown-options {
         font-size: 15px;
         gap: 2px;
-        padding: 8px 18px;
-        border-width: 3px;
+        padding: 12px 18px 4px;
+        border-width: 2px;
     }
 
     .each-drop-option {
@@ -404,11 +493,23 @@
         flex-wrap: wrap;
         justify-content: center;
     }
+
+    /* A pair (Kaifiyat) always fits on one line: larger tiles, no wrapping, a little slack
+       so sub-pixel rounding can't push the second tile down */
+    .others-grid-spread {
+        --u: calc((100vw - 2 * var(--gutter) - 28px) / 1150);
+        flex-wrap: nowrap;
+        justify-content: space-around;
+    }
 }
 
 @media (max-width: 600px) {
     .others-grid-container {
         --u: calc((100vw - 2 * var(--gutter) - 28px) / 1000);
         row-gap: 16px;
+    }
+
+    .others-grid-spread {
+        --u: calc((100vw - 2 * var(--gutter) - 28px) / 1060);
     }
 }

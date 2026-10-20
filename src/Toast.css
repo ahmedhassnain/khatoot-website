@@ -1,0 +1,134 @@
+/* Same paper band and airmail stripe as the cart's postage strip, floating a little above
+   the bottom edge. --toast-lift raises it clear of the postage strip while that is showing. */
+.toast-viewport {
+    position: fixed;
+    left: 50%;
+    bottom: calc(24 * var(--u) + var(--toast-lift, 0px));
+    z-index: 50;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: min(88vw, calc(640 * var(--u)));
+    pointer-events: none;
+    transition: bottom 0.25s ease-out;
+}
+
+.toast {
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    gap: calc(18 * var(--u));
+    box-sizing: border-box;
+    padding: calc(20 * var(--u)) calc(16 * var(--u)) calc(14 * var(--u)) calc(28 * var(--u));
+    border-radius: calc(6 * var(--u));
+    background:
+        url(../resources/footers-top.webp) top / auto calc(9 * var(--u)) repeat-x,
+        url(../resources/navbar/navbar-bg.webp) center / cover;
+    box-shadow: 0 calc(6 * var(--u)) calc(22 * var(--u)) rgba(78, 50, 28, 0.3);
+    color: #5B0000;
+    animation: toast-rise 0.25s ease-out;
+}
+
+/* Errors carry a red inked rule down their left edge so they read differently at a glance */
+.toast-error {
+    border-left: calc(5 * var(--u)) solid #B3261E;
+}
+
+.toast-message {
+    font-family: 'Malevice-Ink';
+    font-size: calc(19 * var(--u));
+    line-height: 1.3;
+}
+
+.toast-action {
+    flex-shrink: 0;
+    font-family: 'Malevice-Ink';
+    font-size: calc(16 * var(--u));
+    color: #5B0000;
+    text-decoration: none;
+    white-space: nowrap;
+    border: calc(2 * var(--u)) solid #5B0000;
+    border-radius: calc(3 * var(--u));
+    padding: calc(5 * var(--u)) calc(14 * var(--u));
+    transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+.toast-action:hover {
+    background-color: #5B0000;
+    color: #F3E9D6;
+}
+
+.toast-close {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(30 * var(--u));
+    height: calc(30 * var(--u));
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.toast-close svg {
+    width: 60%;
+    height: 60%;
+    stroke: #5B0000;
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+
+.toast-action:focus-visible, .toast-close:focus-visible {
+    outline: 2px dashed #5B0000;
+    outline-offset: 2px;
+}
+
+/* Only the position animates, so the note is always readable even if animation is held up */
+@keyframes toast-rise {
+    from { transform: translateY(14px); }
+    to { transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .toast, .toast-viewport {
+        animation: none;
+        transition: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .toast-viewport {
+        bottom: calc(16px + var(--toast-lift, 0px) + env(safe-area-inset-bottom));
+        width: calc(100vw - 2 * var(--gutter));
+        max-width: 560px;
+    }
+
+    .toast {
+        gap: 10px;
+        padding: 16px 8px 12px 16px;
+        background:
+            url(../resources/footers-top.webp) top / auto 7px repeat-x,
+            url(../resources/navbar/navbar-bg.webp) center / cover;
+    }
+
+    .toast-error {
+        border-left-width: 4px;
+    }
+
+    .toast-message {
+        flex: 1;
+        font-size: 14px;
+    }
+
+    .toast-action {
+        font-size: 13px;
+        border-width: 1.5px;
+        padding: 6px 10px;
+    }
+
+    .toast-close {
+        width: 32px;
+        height: 32px;
+    }
+}

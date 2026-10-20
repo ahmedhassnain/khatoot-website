@@ -57,19 +57,76 @@ li {
     position: relative;
 }
 
+/* Catalogue: a button styled as a nav link, opening the collections in the same frosted panel as Search */
+.catalogue-item {
+    position: relative;
+}
+
+.catalogue-nav-link {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: inherit;
+    font-weight: inherit;
+    cursor: pointer;
+}
+
+.catalogue-nav-link:focus-visible,
+.catalogue-panel .nav-link:focus-visible {
+    outline: 2px dashed #5B0000;
+    outline-offset: 3px;
+}
+
+.catalogue-panel {
+    position: absolute;
+    top: calc(40 * var(--u));
+    left: calc(-12 * var(--u));
+    min-width: calc(180 * var(--u));
+    flex-direction: column;
+    background:
+        url(../resources/footers-top.webp) top / auto calc(8 * var(--u)) repeat-x,
+        url(../resources/navbar/navbar-bg.webp) center / cover;
+    border: calc(2 * var(--u)) solid #5B0000;
+    border-radius: calc(4 * var(--u));
+    box-shadow: 0 calc(6 * var(--u)) calc(18 * var(--u)) rgba(78, 50, 28, 0.3);
+    padding: calc(14 * var(--u)) calc(14 * var(--u)) calc(6 * var(--u));
+    z-index: 20;
+}
+
+/* Options are ruled off with the postcard's dashed line */
+.catalogue-panel > li + li {
+    border-top: max(1.5px, calc(2 * var(--u))) dashed rgba(91, 0, 0, 0.35);
+}
+
+.catalogue-panel > li {
+    font-size: calc(20 * var(--u));
+}
+
+.catalogue-panel .nav-link {
+    display: block;
+    padding: calc(6 * var(--u)) calc(4 * var(--u));
+    white-space: nowrap;
+}
+
+.catalogue-panel .nav-link:hover {
+    text-decoration: underline;
+    text-underline-offset: calc(4 * var(--u));
+}
+
+/* Search sits right of the logo, so its panel opens leftwards from the link's right edge */
 .search-panel {
     position: absolute;
     top: calc(40 * var(--u));
-    left: 0;
+    right: 0;
     width: calc(280 * var(--u));
-    background-color: #c9a3527f;
-    border: calc(2.5 * var(--u)) solid #5B0000;
-    border-radius: calc(15 * var(--u));
-    padding: calc(12 * var(--u));
+    background:
+        url(../resources/footers-top.webp) top / auto calc(8 * var(--u)) repeat-x,
+        url(../resources/navbar/navbar-bg.webp) center / cover;
+    border: calc(2 * var(--u)) solid #5B0000;
+    border-radius: calc(4 * var(--u));
+    box-shadow: 0 calc(6 * var(--u)) calc(18 * var(--u)) rgba(78, 50, 28, 0.3);
+    padding: calc(18 * var(--u)) calc(14 * var(--u)) calc(12 * var(--u));
     z-index: 20;
-    -webkit-backdrop-filter: blur(10px);
-     backdrop-filter: blur(10px);
-
 }
 
 .search-input {
@@ -80,7 +137,7 @@ li {
     color: #5B0000;
     background: none;
     border: none;
-    border-bottom: calc(3 * var(--u)) solid #5B0000;
+    border-bottom: max(1.5px, calc(2 * var(--u))) dashed #5B0000;
     padding: calc(4 * var(--u)) calc(2 * var(--u));
     outline: none;
 }
@@ -151,9 +208,13 @@ li {
         left: var(--gutter);
         right: var(--gutter);
         width: auto;
-        padding: 14px;
-        border-width: 2px;
-        border-radius: 12px;
+        padding: 16px 14px 14px;
+        background:
+            url(../resources/footers-top.webp) top / auto 6px repeat-x,
+            url(../resources/navbar/navbar-bg.webp) center / cover;
+        border: 2px solid #5B0000;
+        border-radius: 4px;
+        box-shadow: 0 6px 18px rgba(78, 50, 28, 0.3);
     }
 
     .search-input {
@@ -266,12 +327,13 @@ li {
         left: var(--gutter);
         right: var(--gutter);
         z-index: 30;
-        padding: 6px 18px;
-        background-color: #c9a352e6;
+        padding: 10px 18px 6px;
+        background:
+            url(../resources/footers-top.webp) top / auto 6px repeat-x,
+            url(../resources/navbar/navbar-bg.webp) center / cover;
         border: 2px solid #5B0000;
-        border-radius: 12px;
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
+        border-radius: 4px;
+        box-shadow: 0 6px 18px rgba(78, 50, 28, 0.3);
         animation: menu-unfold 0.22s ease-out;
     }
 
@@ -312,9 +374,24 @@ li {
         padding: 0 2px 14px;
     }
 
+    /* Collections sit indented under Catalogue, ruled off like the main options */
+    .mobile-catalogue-list {
+        flex-direction: column;
+        padding: 0 0 8px 16px;
+    }
+
+    .mobile-catalogue-list > li {
+        font-size: 18px;
+        border-top: 2px dashed rgba(91, 0, 0, 0.25);
+    }
+
+    .mobile-catalogue-list .nav-link {
+        padding: 10px 2px;
+    }
+
     @keyframes menu-unfold {
-        from { opacity: 0; clip-path: inset(0 0 100% 0 round 12px); }
-        to { opacity: 1; clip-path: inset(0 0 0 0 round 12px); }
+        from { opacity: 0; clip-path: inset(0 0 100% 0 round 4px); }
+        to { opacity: 1; clip-path: inset(0 0 0 0 round 4px); }
     }
 }
 
@@ -326,4 +403,8 @@ li {
     .hamburger-line {
         transition: none;
     }
+}
+
+.center-div > a {
+    display: flex;
 }
